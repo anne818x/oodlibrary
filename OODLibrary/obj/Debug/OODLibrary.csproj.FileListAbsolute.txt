@@ -8,3 +8,12 @@ c:\users\annemarieke\documents\visual studio 2015\Projects\OODLibrary\OODLibrary
 c:\users\annemarieke\documents\visual studio 2015\Projects\OODLibrary\OODLibrary\obj\Debug\OODLibrary.csproj.GenerateResource.Cache
 c:\users\annemarieke\documents\visual studio 2015\Projects\OODLibrary\OODLibrary\obj\Debug\OODLibrary.exe
 c:\users\annemarieke\documents\visual studio 2015\Projects\OODLibrary\OODLibrary\obj\Debug\OODLibrary.pdb
+C:\Users\Kaloyan\Documents\oodlibrary\OODLibrary\bin\Debug\OODLibrary.exe.config
+C:\Users\Kaloyan\Documents\oodlibrary\OODLibrary\obj\Debug\OODLibrary.exe
+C:\Users\Kaloyan\Documents\oodlibrary\OODLibrary\obj\Debug\OODLibrary.pdb
+C:\Users\Kaloyan\Documents\oodlibrary\OODLibrary\bin\Debug\OODLibrary.exe
+C:\Users\Kaloyan\Documents\oodlibrary\OODLibrary\bin\Debug\OODLibrary.pdb
+C:\Users\Kaloyan\Documents\oodlibrary\OODLibrary\obj\Debug\OODLibrary.csprojResolveAssemblyReference.cache
+C:\Users\Kaloyan\Documents\oodlibrary\OODLibrary\obj\Debug\OODLibrary.Form1.resources
+C:\Users\Kaloyan\Documents\oodlibrary\OODLibrary\obj\Debug\OODLibrary.Properties.Resources.resources
+C:\Users\Kaloyan\Documents\oodlibrary\OODLibrary\obj\Debug\OODLibrary.csproj.GenerateResource.Cache
