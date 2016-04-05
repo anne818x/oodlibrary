@@ -325,6 +325,7 @@
             this.borrowCDBtn.TabIndex = 10;
             this.borrowCDBtn.Text = "Borrow";
             this.borrowCDBtn.UseVisualStyleBackColor = true;
+            this.borrowCDBtn.Click += new System.EventHandler(this.borrowCDBtn_Click_1);
             // 
             // borrowTapeBtn
             // 
@@ -334,6 +335,7 @@
             this.borrowTapeBtn.TabIndex = 11;
             this.borrowTapeBtn.Text = "Borrow";
             this.borrowTapeBtn.UseVisualStyleBackColor = true;
+            this.borrowTapeBtn.Click += new System.EventHandler(this.borrowTapeBtn_Click_1);
             // 
             // Form1
             // 

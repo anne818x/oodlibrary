@@ -228,13 +228,13 @@ namespace OODLibrary
             selectItem();
         }
 
-        private void borrowTapeBtn_Click(object sender, EventArgs e)
+        private void borrowTapeBtn_Click_1(object sender, EventArgs e)
         {
             switchBorrow = 2;
             selectItem();
         }
 
-        private void borrowCDBtn_Click(object sender, EventArgs e)
+        private void borrowCDBtn_Click_1(object sender, EventArgs e)
         {
             switchBorrow = 1;
             selectItem();
