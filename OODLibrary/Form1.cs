@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace OODLibrary
 {
@@ -39,15 +40,27 @@ namespace OODLibrary
         {
             string selectedItem = borrowList.SelectedItem.ToString();
             string memberID = cardNrBox.Text;
-            DialogResult box = MessageBox.Show(selectedItem, "blabla", MessageBoxButtons.OKCancel);
+            DialogResult box = MessageBox.Show("The Borrowed item you want to borrow is: " + selectedItem, "Borrowing", MessageBoxButtons.OKCancel);
             if (box == DialogResult.OK)
             {
+                if (string.IsNullOrWhiteSpace(cardNrBox.Text))
+                {
+                    MessageBox.Show("Please enter your card number in!");
+                }
+                else if (!string.IsNullOrWhiteSpace(cardNrBox.Text))
+                {
+                    MessageBox.Show("You have borrowed " + selectedItem);
+                    string nullString = null;
+                    connection.addBorrow(cardNrBox.Text,nullString , borrowList.SelectedItem.ToString(), nullString);
 
+                    cardNrBox.Clear();
+                }
             }
             else if (box == DialogResult.Cancel)
             {
 
             }
+            
 
         }
 
@@ -83,14 +96,31 @@ namespace OODLibrary
         public void memberShow()
         {
             memberList.Items.Clear();
-            String memberString = connection.getAllMembers();
 
+            String memberString = connection.getAllMembers();
             foreach (String member in memberString.Split('-'))
             {
                 memberList.Items.Add(member);
             }
         }
+/// <summary>
+/// revenue report
+/// </summary>
+        public void showReport()
+        {
+            /*generate report to show to team*/
+            ArrayList tempArray = new ArrayList();
+            var Message="";
+            String transactions = connection.getTransactions();
 
+            foreach (String transaction in transactions.Split('-'))
+            {
+                Message += transaction+ "\n" ;
+            }
+
+            Message += "Total Revenue:   " + connection.getTransTotal().ToString();
+            MessageBox.Show(Message);
+        }
         private void deleteBtn_Click(object sender, EventArgs e)
         {
             
@@ -119,6 +149,7 @@ namespace OODLibrary
         {
             selectItem();
         }
+
 
         private void borrowedBooks_Click(object sender, EventArgs e)
         {
@@ -151,6 +182,11 @@ namespace OODLibrary
             {
                 returnList.Items.Add(tape);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            showReport();
         }
     }
 }

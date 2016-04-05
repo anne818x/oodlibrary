@@ -19,6 +19,9 @@ namespace OODLibrary
         private string borrowedCDs;
         private string borrowedTapes;
 
+        private string transactions;
+
+        MySqlConnection MyConn;
         public void Connect()
         {
             try
@@ -34,12 +37,13 @@ namespace OODLibrary
 
         public String getAllBooks()
         {
-            MySqlConnection MyConn = new MySqlConnection(connection);
+            MyConn = new MySqlConnection(connection);
             string query1 = "SELECT IDBook, BookName FROM books";
             MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
             MySqlDataReader MyReader;
             MyConn.Open();
             MyReader = MyCommand.ExecuteReader();
+            books = null;
             while (MyReader.Read())
             {
                 books += (MyReader["IDBook"].ToString() + " " + MyReader["BookName"].ToString() + "-");
@@ -49,14 +53,17 @@ namespace OODLibrary
 
         public String getAllCDs()
         {
-            MySqlConnection MyConn = new MySqlConnection(connection);
+
+            MyConn = new MySqlConnection(connection);
             string query1 = "SELECT IDCD, CDName FROM cd";
             MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
             MySqlDataReader MyReader;
             MyConn.Open();
             MyReader = MyCommand.ExecuteReader();
+            cds = null;
             while (MyReader.Read())
             {
+
                 cds += (MyReader["IDCD"].ToString() + " " + MyReader["CDName"].ToString() + "-");
             }
             return cds;
@@ -70,31 +77,72 @@ namespace OODLibrary
             MySqlDataReader MyReader;
             MyConn.Open();
             MyReader = MyCommand.ExecuteReader();
+
+            vidtapes = null;
             while (MyReader.Read())
             {
-                 vidtapes += (MyReader["IDTape"].ToString() + " " + MyReader["TapeName"].ToString() + "-");
+                vidtapes += (MyReader["IDTape"].ToString() + " " + MyReader["TapeName"].ToString() + "-");
             }
             return vidtapes;
         }
 
         public String getAllMembers()
         {
-            MySqlConnection MyConn = new MySqlConnection(connection);
+            MyConn = new MySqlConnection(connection);
             string query1 = "SELECT IDMember, MemberName FROM userdata";
+            MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
+            MySqlDataReader MyReader;
+            MyConn.Open();
+            MyReader = MyCommand.ExecuteReader();
+
+            members = null;
+            while (MyReader.Read())
+            {
+                members += (MyReader["IDMember"].ToString() + " " + MyReader["MemberName"].ToString() + "-");
+            }
+            return members;
+        }
+
+
+        /// <summary>
+        /// Gets all transactions
+        /// </summary>
+        /// <returns>string of tranactions</returns>
+        public String getTransactions()
+        {
+
+            transactions = "";
+            MySqlConnection MyConn = new MySqlConnection(connection);
+            string query1 = "SELECT * FROM transactions";
             MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
             MySqlDataReader MyReader;
             MyConn.Open();
             MyReader = MyCommand.ExecuteReader();
             while (MyReader.Read())
             {
-                members += (MyReader["IDMember"].ToString() + " " +  MyReader["MemberName"].ToString() + "-");
+                transactions += ("TransID: "+MyReader["id"].ToString() + "  Member_id: " + MyReader["c_id"].ToString() + " Amount: " +MyReader["money_transferred"].ToString() +" Type: "+ MyReader["transaction_type"].ToString()+"-");
             }
-            return members;
+            return transactions;
         }
 
+        public double getTransTotal()
+        {
+            double tempTotal = 0.0;
+            MySqlConnection MyConn = new MySqlConnection(connection);
+            string query1 = "SELECT * FROM transactions";
+            MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
+            MySqlDataReader MyReader;
+            MyConn.Open();
+            MyReader = MyCommand.ExecuteReader();
+            while (MyReader.Read())
+            {
+                tempTotal += Convert.ToDouble(MyReader["money_transferred"].ToString());
+            }
+            return tempTotal;
+        }
         public void deleteMember(string IDMember)
         {
-            MySqlConnection MyConn = new MySqlConnection(connection);
+            MyConn = new MySqlConnection(connection);
             string query1 = "DELETE FROM userdata WHERE IDMember =" + "'" + IDMember + "'";
             MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
             MySqlDataReader MyReader;
@@ -103,10 +151,10 @@ namespace OODLibrary
 
         }
 
-        public void addBorrow(string IDMember, string IDCD, string IDTape, string IDBook)
+        public void addBorrow(string IDMember, string IDBook, string IDCD, string IDTape)
         {
-            MySqlConnection MyConn = new MySqlConnection(connection);
-            string query1 = "INSERT INTO borrow (IDMember,IDCD,IDTape,IDBook,StartDate,EndDate) VALUES(" + "'" + IDMember + "'" + "," + "'" + IDCD + "'" + "," + "'" + IDTape + "'" + "," + "'" + IDBook + "'" + "," + "'" + DateTime.Now.Date + "'" + "," + "'" + DateTime.Now.Date + "'" + ")";
+            MyConn = new MySqlConnection(connection);
+            string query1 = "INSERT INTO borrow (IDMember,IDBook,IDCD,IDTape,StartDate,EndDate) VALUES(" + "'" + IDMember + "'" + "," + "'" + IDBook + "'" + "," + "'" + IDCD + "'" + "," + "'" + IDTape + "'" + "," + "'" + DateTime.Now.Date + "'" + "," + "'" + DateTime.Now.Date + "'" + ")";
             MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
             MySqlDataReader MyReader;
             MyConn.Open();
@@ -115,8 +163,8 @@ namespace OODLibrary
 
         public void addMember(string name, string age)
         {
-            MySqlConnection MyConn = new MySqlConnection(connection);
-            string query1 = "INSERT INTO userdata (MemberName,Age) VALUES(" + "'" + name + "'" +"," + "'" + age + "'" + ")";
+            MyConn = new MySqlConnection(connection);
+            string query1 = "INSERT INTO userdata (MemberName,Age) VALUES(" + "'" + name + "'" + "," + "'" + age + "'" + ")";
             MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
             MySqlDataReader MyReader;
             MyConn.Open();
