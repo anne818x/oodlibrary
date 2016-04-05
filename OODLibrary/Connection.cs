@@ -109,10 +109,10 @@ namespace OODLibrary
 
         }
 
-        public void addBorrow(string IDMember, string IDCD, string IDTape, string IDBook)
+        public void addBorrow(string IDMember, string IDBook, string IDCD, string IDTape)
         {
             MyConn = new MySqlConnection(connection);
-            string query1 = "INSERT INTO borrow (IDMember,IDCD,IDTape,IDBook,StartDate,EndDate) VALUES(" + "'" + IDMember + "'" + "," + "'" + IDCD + "'" + "," + "'" + IDTape + "'" + "," + "'" + IDBook + "'" + "," + "'" + DateTime.Now.Date + "'" + "," + "'" + DateTime.Now.Date + "'" + ")";
+            string query1 = "INSERT INTO borrow (IDMember,IDBook,IDCD,IDTape,StartDate,EndDate) VALUES(" + "'" + IDMember + "'" + "," + "'" + IDBook + "'" + "," + "'" + IDCD + "'" + "," + "'" + IDTape + "'" + "," + "'" + DateTime.Now.Date + "'" + "," + "'" + DateTime.Now.Date + "'" + ")";
             MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
             MySqlDataReader MyReader;
             MyConn.Open();

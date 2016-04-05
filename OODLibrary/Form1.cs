@@ -39,15 +39,27 @@ namespace OODLibrary
         {
             string selectedItem = borrowList.SelectedItem.ToString();
             string memberID = cardNrBox.Text;
-            DialogResult box = MessageBox.Show(selectedItem, "blabla", MessageBoxButtons.OKCancel);
+            DialogResult box = MessageBox.Show("The Borrowed item you want to borrow is: " + selectedItem, "Borrowing", MessageBoxButtons.OKCancel);
             if (box == DialogResult.OK)
             {
+                if (string.IsNullOrWhiteSpace(cardNrBox.Text))
+                {
+                    MessageBox.Show("Please enter your card number in!");
+                }
+                else if (!string.IsNullOrWhiteSpace(cardNrBox.Text))
+                {
+                    MessageBox.Show("You have borrowed " + selectedItem);
+                    string nullString = null;
+                    connection.addBorrow(cardNrBox.Text,nullString , borrowList.SelectedItem.ToString(), nullString);
 
+                    cardNrBox.Clear();
+                }
             }
             else if (box == DialogResult.Cancel)
             {
 
             }
+            
 
         }
 
