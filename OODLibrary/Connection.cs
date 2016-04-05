@@ -15,7 +15,7 @@ namespace OODLibrary
         private string vidtapes;
         private string members;
         private string connection = "datasource=localhost;database=oodlibrary;port=;username=root;password=";
-
+        private string transactions;
         public void Connect()
         {
             try
@@ -89,6 +89,43 @@ namespace OODLibrary
             return members;
         }
 
+
+        /// <summary>
+        /// Gets all transactions
+        /// </summary>
+        /// <returns>string of tranactions</returns>
+        public String getTransactions()
+        {
+
+            transactions = "";
+            MySqlConnection MyConn = new MySqlConnection(connection);
+            string query1 = "SELECT * FROM transactions";
+            MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
+            MySqlDataReader MyReader;
+            MyConn.Open();
+            MyReader = MyCommand.ExecuteReader();
+            while (MyReader.Read())
+            {
+                transactions += ("TransID: "+MyReader["id"].ToString() + "  Member_id: " + MyReader["c_id"].ToString() + " Amount: " +MyReader["money_transferred"].ToString() +" Type: "+ MyReader["transaction_type"].ToString()+"-");
+            }
+            return transactions;
+        }
+
+        public double getTransTotal()
+        {
+            double tempTotal = 0.0;
+            MySqlConnection MyConn = new MySqlConnection(connection);
+            string query1 = "SELECT * FROM transactions";
+            MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
+            MySqlDataReader MyReader;
+            MyConn.Open();
+            MyReader = MyCommand.ExecuteReader();
+            while (MyReader.Read())
+            {
+                tempTotal += Convert.ToDouble(MyReader["money_transferred"].ToString());
+            }
+            return tempTotal;
+        }
         public void deleteMember(string IDMember)
         {
             MySqlConnection MyConn = new MySqlConnection(connection);

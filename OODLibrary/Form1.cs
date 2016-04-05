@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace OODLibrary
 {
@@ -90,7 +91,24 @@ namespace OODLibrary
                 memberList.Items.Add(member);
             }
         }
+/// <summary>
+/// revenue report
+/// </summary>
+        public void showReport()
+        {
+            /*generate report to show to team*/
+            ArrayList tempArray = new ArrayList();
+            var Message="";
+            String transactions = connection.getTransactions();
 
+            foreach (String transaction in transactions.Split('-'))
+            {
+                Message += transaction+ "\n" ;
+            }
+
+            Message += "Total Revenue:   " + connection.getTransTotal().ToString();
+            MessageBox.Show(Message);
+        }
         private void deleteBtn_Click(object sender, EventArgs e)
         {
             
@@ -118,6 +136,11 @@ namespace OODLibrary
         private void borrowBtn_Click(object sender, EventArgs e)
         {
             selectItem();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            showReport();
         }
     }
 }
