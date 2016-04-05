@@ -46,14 +46,15 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label4 = new System.Windows.Forms.Label();
             this.cardNrBox = new System.Windows.Forms.TextBox();
-            this.borrowBtn = new System.Windows.Forms.Button();
+            this.borrowBookBtn = new System.Windows.Forms.Button();
             this.borrowList = new System.Windows.Forms.ListBox();
-
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.borrowedTapes = new System.Windows.Forms.Button();
             this.borrowedCD = new System.Windows.Forms.Button();
             this.borrowedBooks = new System.Windows.Forms.Button();
             this.returnList = new System.Windows.Forms.ListBox();
+            this.borrowCDBtn = new System.Windows.Forms.Button();
+            this.borrowTapeBtn = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -212,9 +213,11 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.borrowTapeBtn);
+            this.tabPage2.Controls.Add(this.borrowCDBtn);
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.cardNrBox);
-            this.tabPage2.Controls.Add(this.borrowBtn);
+            this.tabPage2.Controls.Add(this.borrowBookBtn);
             this.tabPage2.Controls.Add(this.borrowList);
             this.tabPage2.Controls.Add(this.cdBtn);
             this.tabPage2.Controls.Add(this.label1);
@@ -244,15 +247,15 @@
             this.cardNrBox.Size = new System.Drawing.Size(43, 20);
             this.cardNrBox.TabIndex = 8;
             // 
-            // borrowBtn
+            // borrowBookBtn
             // 
-            this.borrowBtn.Location = new System.Drawing.Point(104, 205);
-            this.borrowBtn.Name = "borrowBtn";
-            this.borrowBtn.Size = new System.Drawing.Size(142, 23);
-            this.borrowBtn.TabIndex = 7;
-            this.borrowBtn.Text = "Borrow";
-            this.borrowBtn.UseVisualStyleBackColor = true;
-            this.borrowBtn.Click += new System.EventHandler(this.borrowBtn_Click);
+            this.borrowBookBtn.Location = new System.Drawing.Point(104, 205);
+            this.borrowBookBtn.Name = "borrowBookBtn";
+            this.borrowBookBtn.Size = new System.Drawing.Size(142, 23);
+            this.borrowBookBtn.TabIndex = 7;
+            this.borrowBookBtn.Text = "Borrow";
+            this.borrowBookBtn.UseVisualStyleBackColor = true;
+            this.borrowBookBtn.Click += new System.EventHandler(this.borrowBookBtn_Click);
             // 
             // borrowList
             // 
@@ -314,12 +317,23 @@
             this.returnList.Size = new System.Drawing.Size(388, 147);
             this.returnList.TabIndex = 0;
             // 
-            this.borrowList.FormattingEnabled = true;
-            this.borrowList.Location = new System.Drawing.Point(104, 24);
-            this.borrowList.Name = "borrowList";
-            this.borrowList.Size = new System.Drawing.Size(142, 134);
-            this.borrowList.TabIndex = 6;
-
+            // borrowCDBtn
+            // 
+            this.borrowCDBtn.Location = new System.Drawing.Point(104, 205);
+            this.borrowCDBtn.Name = "borrowCDBtn";
+            this.borrowCDBtn.Size = new System.Drawing.Size(142, 23);
+            this.borrowCDBtn.TabIndex = 10;
+            this.borrowCDBtn.Text = "Borrow";
+            this.borrowCDBtn.UseVisualStyleBackColor = true;
+            // 
+            // borrowTapeBtn
+            // 
+            this.borrowTapeBtn.Location = new System.Drawing.Point(104, 205);
+            this.borrowTapeBtn.Name = "borrowTapeBtn";
+            this.borrowTapeBtn.Size = new System.Drawing.Size(142, 23);
+            this.borrowTapeBtn.TabIndex = 11;
+            this.borrowTapeBtn.Text = "Borrow";
+            this.borrowTapeBtn.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -358,7 +372,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button addBtn;
         private System.Windows.Forms.Button showBtn;
-        private System.Windows.Forms.Button borrowBtn;
+        private System.Windows.Forms.Button borrowBookBtn;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox cardNrBox;
         private System.Windows.Forms.TabPage tabPage3;
@@ -366,6 +380,8 @@
         private System.Windows.Forms.Button borrowedTapes;
         private System.Windows.Forms.Button borrowedCD;
         private System.Windows.Forms.Button borrowedBooks;
+        private System.Windows.Forms.Button borrowTapeBtn;
+        private System.Windows.Forms.Button borrowCDBtn;
     }
 }
 
