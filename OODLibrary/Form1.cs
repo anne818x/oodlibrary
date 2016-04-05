@@ -119,5 +119,38 @@ namespace OODLibrary
         {
             selectItem();
         }
+
+        private void borrowedBooks_Click(object sender, EventArgs e)
+        {
+            returnList.Items.Clear();
+            String booksString = connection.showBorrowedBooks();
+
+            foreach (string book in booksString.Split('/'))
+            {
+                returnList.Items.Add(book);
+            }
+        }
+
+        private void borrowedCD_Click(object sender, EventArgs e)
+        {
+            returnList.Items.Clear();
+            String cdsString = connection.showBorrowedCDs();
+
+            foreach (string cd in cdsString.Split('/'))
+            {
+                returnList.Items.Add(cd);
+            }
+        }
+
+        private void borrowedTapes_Click(object sender, EventArgs e)
+        {
+            returnList.Items.Clear();
+            String tapesString = connection.showBorrowedTapes();
+
+            foreach (string tape in tapesString.Split('/'))
+            {
+                returnList.Items.Add(tape);
+            }
+        }
     }
 }
