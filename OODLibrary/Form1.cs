@@ -83,8 +83,8 @@ namespace OODLibrary
         public void memberShow()
         {
             memberList.Items.Clear();
-            String memberString = connection.getAllMembers();
 
+            String memberString = connection.getAllMembers();
             foreach (String member in memberString.Split('-'))
             {
                 memberList.Items.Add(member);
