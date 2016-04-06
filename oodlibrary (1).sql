@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Machine: 127.0.0.1
--- Gegenereerd op: 02 apr 2016 om 13:17
+-- Gegenereerd op: 06 apr 2016 om 11:24
 -- Serverversie: 5.6.20
 -- PHP-versie: 5.5.15
 
@@ -52,21 +52,26 @@ INSERT INTO `books` (`IDBook`, `BookName`, `ISBN`, `Type`, `Availability`) VALUE
 --
 
 CREATE TABLE IF NOT EXISTS `borrow` (
-  `BorrowID` int(11) NOT NULL,
+`BorrowID` int(11) NOT NULL,
   `IDMember` int(11) NOT NULL,
   `IDBook` int(11) DEFAULT NULL,
   `IDCD` int(11) DEFAULT NULL,
   `IDTape` int(11) DEFAULT NULL,
   `StartDate` date NOT NULL,
   `EndDate` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `borrow`
 --
 
 INSERT INTO `borrow` (`BorrowID`, `IDMember`, `IDBook`, `IDCD`, `IDTape`, `StartDate`, `EndDate`) VALUES
-(1, 2, NULL, 2, NULL, '2016-03-11', '2016-03-21');
+(14, 2, NULL, NULL, 2, '2016-04-05', '2016-04-05'),
+(4, 38, NULL, 4, NULL, '2016-04-06', '2016-04-28'),
+(8, 45, NULL, 1, NULL, '2016-04-05', '2016-04-05'),
+(10, 49, NULL, NULL, 4, '2016-04-05', '2016-04-05'),
+(11, 50, NULL, NULL, 3, '2016-04-05', '2016-04-05'),
+(12, 51, 1, NULL, NULL, '2016-04-05', '2016-04-05');
 
 -- --------------------------------------------------------
 
@@ -128,7 +133,7 @@ CREATE TABLE IF NOT EXISTS `userdata` (
 `IDMember` int(11) NOT NULL,
   `MemberName` varchar(255) NOT NULL,
   `Age` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=53 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=52 ;
 
 --
 -- Gegevens worden geëxporteerd voor tabel `userdata`
@@ -188,7 +193,7 @@ ALTER TABLE `books`
 -- Indexen voor tabel `borrow`
 --
 ALTER TABLE `borrow`
- ADD UNIQUE KEY `IDMember` (`IDMember`), ADD UNIQUE KEY `IDTape` (`IDTape`), ADD UNIQUE KEY `IDBook` (`IDBook`), ADD UNIQUE KEY `IDCD` (`IDCD`);
+ ADD UNIQUE KEY `IDMember` (`IDMember`), ADD UNIQUE KEY `BorrowID` (`BorrowID`), ADD UNIQUE KEY `IDTape` (`IDTape`), ADD UNIQUE KEY `IDBook` (`IDBook`), ADD UNIQUE KEY `IDCD` (`IDCD`);
 
 --
 -- Indexen voor tabel `cd`
@@ -213,10 +218,15 @@ ALTER TABLE `videotape`
 --
 
 --
+-- AUTO_INCREMENT voor een tabel `borrow`
+--
+ALTER TABLE `borrow`
+MODIFY `BorrowID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+--
 -- AUTO_INCREMENT voor een tabel `userdata`
 --
 ALTER TABLE `userdata`
-MODIFY `IDMember` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=53;
+MODIFY `IDMember` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=52;
 --
 -- Beperkingen voor geëxporteerde tabellen
 --

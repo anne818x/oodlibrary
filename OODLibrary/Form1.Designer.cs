@@ -51,11 +51,13 @@
             this.borrowBookBtn = new System.Windows.Forms.Button();
             this.borrowList = new System.Windows.Forms.ListBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.returnBooks = new System.Windows.Forms.Button();
             this.borrowedTapes = new System.Windows.Forms.Button();
             this.borrowedCD = new System.Windows.Forms.Button();
             this.borrowedBooks = new System.Windows.Forms.Button();
             this.returnList = new System.Windows.Forms.ListBox();
-            this.returnBooks = new System.Windows.Forms.Button();
+            this.returnCD = new System.Windows.Forms.Button();
+            this.returnTape = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -288,6 +290,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.returnTape);
+            this.tabPage3.Controls.Add(this.returnCD);
             this.tabPage3.Controls.Add(this.returnBooks);
             this.tabPage3.Controls.Add(this.borrowedTapes);
             this.tabPage3.Controls.Add(this.borrowedCD);
@@ -300,6 +304,16 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Return Page";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // returnBooks
+            // 
+            this.returnBooks.Location = new System.Drawing.Point(18, 207);
+            this.returnBooks.Name = "returnBooks";
+            this.returnBooks.Size = new System.Drawing.Size(101, 42);
+            this.returnBooks.TabIndex = 4;
+            this.returnBooks.Text = "Return Book";
+            this.returnBooks.UseVisualStyleBackColor = true;
+            this.returnBooks.Click += new System.EventHandler(this.returnBooks_Click);
             // 
             // borrowedTapes
             // 
@@ -339,15 +353,25 @@
             this.returnList.Size = new System.Drawing.Size(388, 147);
             this.returnList.TabIndex = 0;
             // 
-            // returnBooks
+            // returnCD
             // 
-            this.returnBooks.Location = new System.Drawing.Point(18, 207);
-            this.returnBooks.Name = "returnBooks";
-            this.returnBooks.Size = new System.Drawing.Size(101, 42);
-            this.returnBooks.TabIndex = 4;
-            this.returnBooks.Text = "Return Book";
-            this.returnBooks.UseVisualStyleBackColor = true;
-            this.returnBooks.Click += new System.EventHandler(this.returnBooks_Click);
+            this.returnCD.Location = new System.Drawing.Point(149, 207);
+            this.returnCD.Name = "returnCD";
+            this.returnCD.Size = new System.Drawing.Size(101, 42);
+            this.returnCD.TabIndex = 5;
+            this.returnCD.Text = "Return CD";
+            this.returnCD.UseVisualStyleBackColor = true;
+            this.returnCD.Click += new System.EventHandler(this.returnCD_Click);
+            // 
+            // returnTape
+            // 
+            this.returnTape.Location = new System.Drawing.Point(281, 210);
+            this.returnTape.Name = "returnTape";
+            this.returnTape.Size = new System.Drawing.Size(101, 42);
+            this.returnTape.TabIndex = 6;
+            this.returnTape.Text = "Return Tape";
+            this.returnTape.UseVisualStyleBackColor = true;
+            this.returnTape.Click += new System.EventHandler(this.returnTape_Click);
             // 
             // Form1
             // 
@@ -397,6 +421,8 @@
         private System.Windows.Forms.Button borrowTapeBtn;
         private System.Windows.Forms.Button borrowCDBtn;
         private System.Windows.Forms.Button returnBooks;
+        private System.Windows.Forms.Button returnCD;
+        private System.Windows.Forms.Button returnTape;
     }
 }
 

@@ -186,7 +186,7 @@ namespace OODLibrary
                 string endDate = MyReader["EndDate"].ToString();
                 var totalDays = (Convert.ToDateTime(endDate) - Convert.ToDateTime(startDate)).TotalDays;
 
-                borrowedBooks += (MyReader["IDBook"].ToString() + " - " + MyReader["BookName"].ToString() + " - " + MyReader["Type"].ToString() + " - " + "lend period:" + totalDays + " days" + " - " + MyReader["EndDate"].ToString() + "/");
+                borrowedBooks += (MyReader["IDBook"].ToString() + " - " + MyReader["BookName"].ToString() + " -" + MyReader["Type"].ToString() + "- " + "lend period:" + totalDays + " days" + " - " + MyReader["StartDate"].ToString() + "/");
             }
             return borrowedBooks;
         }
@@ -206,7 +206,7 @@ namespace OODLibrary
                 string endDate = MyReader["EndDate"].ToString();
                 var totalDays = (Convert.ToDateTime(endDate) - Convert.ToDateTime(startDate)).TotalDays;
 
-                borrowedCDs += (MyReader["CDName"].ToString() + " - " + MyReader["Type"].ToString() + " - " + MyReader["ReleaseDate"].ToString() + " - " + "lend period:" + totalDays + " days" + " - " + MyReader["EndDate"].ToString() + "/");
+                borrowedCDs += (MyReader["IDCD"].ToString() + " - " + MyReader["CDName"].ToString() + " -" + MyReader["Type"].ToString() + "- " + MyReader["ReleaseDate"].ToString() + " - " + "lend period:" + totalDays + " days" + " - " + MyReader["StartDate"].ToString() + "/");
             }
             return borrowedCDs;
         }
@@ -226,7 +226,7 @@ namespace OODLibrary
                 string endDate = MyReader["EndDate"].ToString();
                 var totalDays = (Convert.ToDateTime(endDate) - Convert.ToDateTime(startDate)).TotalDays;
 
-                borrowedTapes += (MyReader["TapeName"].ToString() + " - " + MyReader["Type"].ToString() + " - " + "lend period:" + totalDays + " days" + " - " + MyReader["EndDate"].ToString() + "/");
+                borrowedTapes += (MyReader["TapeName"].ToString() + " - " + MyReader["Type"].ToString() + " - " + "lend period:" + totalDays + " days" + " - " + MyReader["StartDate"].ToString() + "/");
             }
             return borrowedTapes;
         }
@@ -235,14 +235,13 @@ namespace OODLibrary
         {
             MyConn = new MySqlConnection(connection);
             string query1 = "DELETE FROM borrow WHERE IDBook =" + "'" + bookId + "'";
-            string query2 = "UPDATE books SET Availability = 'Yes' WHERE IDBook = " + "'" + bookId + "'";
             MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
             MySqlDataReader MyReader;
             MyConn.Open();
             MyReader = MyCommand.ExecuteReader();
         }
 
-        public void setAvailable(int bookId)
+        public void setBookAvailable(int bookId)
         {
             MyConn = new MySqlConnection(connection);
             string query1 = "UPDATE books SET Availability = 'Yes' WHERE IDBook = " + "'" + bookId + "'";
@@ -251,5 +250,26 @@ namespace OODLibrary
             MyConn.Open();
             MyReader = MyCommand.ExecuteReader();
         }
+
+        public void returnCD(int cdId)
+        {
+            MyConn = new MySqlConnection(connection);
+            string query1 = "DELETE FROM borrow WHERE IDCD =" + "'" + cdId + "'";
+            MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
+            MySqlDataReader MyReader;
+            MyConn.Open();
+            MyReader = MyCommand.ExecuteReader();
+        }
+
+        public void setCDAvailable(int cdId)
+        {
+            MyConn = new MySqlConnection(connection);
+            string query1 = "UPDATE cd SET Availability = 'Yes' WHERE IDCD = " + "'" + cdId + "'";
+            MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
+            MySqlDataReader MyReader;
+            MyConn.Open();
+            MyReader = MyCommand.ExecuteReader();
+        }
+
     }
 }
