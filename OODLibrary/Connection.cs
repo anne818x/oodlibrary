@@ -186,7 +186,7 @@ namespace OODLibrary
                 string endDate = MyReader["EndDate"].ToString();
                 var totalDays = (Convert.ToDateTime(endDate) - Convert.ToDateTime(startDate)).TotalDays;
 
-                borrowedBooks += (MyReader["BookName"].ToString() + " - " + MyReader["Type"].ToString() + " - " + "lend period:" + totalDays + " days" + " - " + MyReader["EndDate"].ToString() + "/");
+                borrowedBooks += (MyReader["IDBook"].ToString() + " - " + MyReader["BookName"].ToString() + " - " + MyReader["Type"].ToString() + " - " + "lend period:" + totalDays + " days" + " - " + MyReader["EndDate"].ToString() + "/");
             }
             return borrowedBooks;
         }
@@ -229,6 +229,27 @@ namespace OODLibrary
                 borrowedTapes += (MyReader["TapeName"].ToString() + " - " + MyReader["Type"].ToString() + " - " + "lend period:" + totalDays + " days" + " - " + MyReader["EndDate"].ToString() + "/");
             }
             return borrowedTapes;
+        }
+
+        public void returnBook(int bookId)
+        {
+            MyConn = new MySqlConnection(connection);
+            string query1 = "DELETE FROM borrow WHERE IDBook =" + "'" + bookId + "'";
+            string query2 = "UPDATE books SET Availability = 'Yes' WHERE IDBook = " + "'" + bookId + "'";
+            MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
+            MySqlDataReader MyReader;
+            MyConn.Open();
+            MyReader = MyCommand.ExecuteReader();
+        }
+
+        public void setAvailable(int bookId)
+        {
+            MyConn = new MySqlConnection(connection);
+            string query1 = "UPDATE books SET Availability = 'Yes' WHERE IDBook = " + "'" + bookId + "'";
+            MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
+            MySqlDataReader MyReader;
+            MyConn.Open();
+            MyReader = MyCommand.ExecuteReader();
         }
     }
 }

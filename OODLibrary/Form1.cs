@@ -239,5 +239,25 @@ namespace OODLibrary
             switchBorrow = 1;
             selectItem();
         }
+
+        private void returnBooks_Click(object sender, EventArgs e)
+        {
+            string bookSelected = returnList.SelectedItem.ToString();
+            string[] splitstring = bookSelected.Split('-');
+            int bookId = Int32.Parse(splitstring[0]);
+            string name = splitstring[1];
+            string type = splitstring[2];
+            string borrowPeriod = splitstring[3].Substring(13, 2);
+            DateTime endDate = Convert.ToDateTime(splitstring[4]);
+
+            if (DateTime.Now <= endDate)
+            {
+                MessageBox.Show("You are returning this book on time", "Details", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                connection.returnBook(bookId);
+                connection.setAvailable(bookId);
+            }
+
+
+        }
     }
 }
