@@ -26,8 +26,6 @@ namespace OODLibrary
         private void Form1_Load(object sender, EventArgs e)
         {
             connection.Connect();
-            
-            
         }
 
 
@@ -59,6 +57,7 @@ namespace OODLibrary
             Message += "Total Revenue:   " + connection.getTransTotal().ToString();
             MessageBox.Show(Message);
         }
+
         private void deleteBtn_Click(object sender, EventArgs e)
         {
             
@@ -121,12 +120,8 @@ namespace OODLibrary
             showReport();
         }
 
-        
-
-
-
         public void selectItem()
-        {
+        { 
             string selectedItem = borrowList.SelectedItem.ToString();
             string memberID = cardNrBox.Text;
             DialogResult box = MessageBox.Show("The Borrowed item you want to borrow is: " + selectedItem, "Borrowing", MessageBoxButtons.OKCancel);
@@ -140,12 +135,13 @@ namespace OODLibrary
                 {
                     MessageBox.Show("You have borrowed " + selectedItem);
                     string nullString = "NULL";
-
+                    
+                  
                     if (switchBorrow == 0)
                     {
-
+                        
                         connection.addBorrow("'" + cardNrBox.Text + "'", "'" + borrowList.SelectedItem.ToString() + "'", nullString, nullString);
-
+                        connection.setBookBorrowedNotAvailable(borrowList.SelectedItem.ToString());
                         cardNrBox.Clear();
                     }
 
@@ -153,7 +149,7 @@ namespace OODLibrary
                     {
 
                         connection.addBorrow("'" + cardNrBox.Text + "'", nullString, "'" + borrowList.SelectedItem.ToString() + "'", nullString);
-
+                        connection.setCDBorrowedNotAvailable(borrowList.SelectedItem.ToString());
                         cardNrBox.Clear();
                     }
 
@@ -161,7 +157,7 @@ namespace OODLibrary
                     {
 
                         connection.addBorrow("'" + cardNrBox.Text + "'", nullString, nullString, "'" + borrowList.SelectedItem.ToString() + "'");
-
+                        connection.setTapeBorrowedNotAvailable(borrowList.SelectedItem.ToString());
                         cardNrBox.Clear();
                     }
                 }
@@ -455,4 +451,8 @@ namespace OODLibrary
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> f616d5ecda9c1c073763b6a9d86bdecf0863b9e5

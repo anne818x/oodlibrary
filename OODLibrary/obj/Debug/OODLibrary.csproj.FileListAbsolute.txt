@@ -36,3 +36,12 @@ C:\Users\Annemarieke\Documents\GitHub\oodlibrary\OODLibrary\obj\Debug\OODLibrary
 C:\Users\Annemarieke\Documents\GitHub\oodlibrary\OODLibrary\obj\Debug\OODLibrary.Form1.resources
 C:\Users\Annemarieke\Documents\GitHub\oodlibrary\OODLibrary\obj\Debug\OODLibrary.Properties.Resources.resources
 C:\Users\Annemarieke\Documents\GitHub\oodlibrary\OODLibrary\obj\Debug\OODLibrary.csproj.GenerateResource.Cache
+C:\Users\emily\Documents\GitHub\oodlibrary\OODLibrary\bin\Debug\OODLibrary.exe.config
+C:\Users\emily\Documents\GitHub\oodlibrary\OODLibrary\obj\Debug\OODLibrary.exe
+C:\Users\emily\Documents\GitHub\oodlibrary\OODLibrary\obj\Debug\OODLibrary.pdb
+C:\Users\emily\Documents\GitHub\oodlibrary\OODLibrary\bin\Debug\OODLibrary.exe
+C:\Users\emily\Documents\GitHub\oodlibrary\OODLibrary\bin\Debug\OODLibrary.pdb
+C:\Users\emily\Documents\GitHub\oodlibrary\OODLibrary\obj\Debug\OODLibrary.csprojResolveAssemblyReference.cache
+C:\Users\emily\Documents\GitHub\oodlibrary\OODLibrary\obj\Debug\OODLibrary.Form1.resources
+C:\Users\emily\Documents\GitHub\oodlibrary\OODLibrary\obj\Debug\OODLibrary.Properties.Resources.resources
+C:\Users\emily\Documents\GitHub\oodlibrary\OODLibrary\obj\Debug\OODLibrary.csproj.GenerateResource.Cache
