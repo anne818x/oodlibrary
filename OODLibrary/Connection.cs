@@ -154,7 +154,8 @@ namespace OODLibrary
         public void addBorrow(string IDMember, string IDBook, string IDCD, string IDTape)
         {
             MyConn = new MySqlConnection(connection);
-            string query1 = "INSERT INTO borrow (IDMember,IDBook,IDCD,IDTape,StartDate,EndDate) VALUES(" + IDMember + "," + IDBook + "," + IDCD + "," + IDTape + "," + "'" + DateTime.Now.ToString("yyyy-MM-dd") + "'" + "," + "'" + DateTime.Now.ToString("yyyy-MM-dd") + "'" + ")";
+        
+            string query1 = "INSERT INTO borrow (IDMember,IDBook,IDCD,IDTape,StartDate) VALUES(" + IDMember + "," + IDBook + "," + IDCD + "," + IDTape + "," + "'" + DateTime.Now.ToString("yyyy-MM-dd") + "')";
             MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
             MySqlDataReader MyReader;
             MyConn.Open();
@@ -230,5 +231,36 @@ namespace OODLibrary
             }
             return borrowedTapes;
         }
+
+        public void setBookBorrowedNotAvailable(String bookId)
+        {
+            MyConn = new MySqlConnection(connection);
+            string query1 = "UPDATE books SET Availability = 'No' WHERE IDBook = " + "'" + bookId + "'";
+            MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
+            MySqlDataReader MyReader;
+            MyConn.Open();
+            MyReader = MyCommand.ExecuteReader();
+        }
+
+        public void setCDBorrowedNotAvailable(String cdId)
+        {
+            MyConn = new MySqlConnection(connection);
+            string query1 = "UPDATE cd SET Availability = 'No' WHERE IDBook = " + "'" + cdId + "'";
+            MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
+            MySqlDataReader MyReader;
+            MyConn.Open();
+            MyReader = MyCommand.ExecuteReader();
+        }
+
+        public void setTapeBorrowedNotAvailable(String tapeId)
+        {
+            MyConn = new MySqlConnection(connection);
+            string query1 = "UPDATE videotape SET Availability = 'No' WHERE IDBook = " + "'" + tapeId + "'";
+            MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
+            MySqlDataReader MyReader;
+            MyConn.Open();
+            MyReader = MyCommand.ExecuteReader();
+        }
+
     }
 }
