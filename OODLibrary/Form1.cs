@@ -451,8 +451,4 @@ namespace OODLibrary
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> f616d5ecda9c1c073763b6a9d86bdecf0863b9e5
