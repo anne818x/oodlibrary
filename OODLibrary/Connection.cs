@@ -323,17 +323,27 @@ namespace OODLibrary
         public string getReservations(int id, string type)
         {
             MySqlConnection MyConn = new MySqlConnection(connection);
-            string query = "SELECT * FROM reservations WHERE id=" +id.ToString()+" AND type=" +type;
+            string query = "SELECT * FROM reservations WHERE id=" + id.ToString() + " AND type=" + type;
             MySqlCommand MyCommand = new MySqlCommand(query, MyConn);
             MySqlDataReader MyReader;
             MyConn.Open();
             MyReader = MyCommand.ExecuteReader();
-            borrowedTapes = "";
+            reservations = "";
             while (MyReader.Read())
             {
                 reservations = "not set yet";
             }
             return reservations;
+        }
+
+        public void placeReservation(int id, int c_id,  string type)
+        {
+            MySqlConnection MyConn = new MySqlConnection(connection);
+            string query = "INSERT INTO reservations VALUES (null," + c_id + "0.5 ," + c_id.ToString() +","+type +"null)"; 
+            MySqlCommand MyCommand = new MySqlCommand(query, MyConn);
+            MySqlDataReader MyReader;
+            MyConn.Open();
+            MyReader = MyCommand.ExecuteReader();
         }
 
     }
