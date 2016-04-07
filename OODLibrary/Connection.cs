@@ -26,7 +26,6 @@ namespace OODLibrary
         private string reservations;
         private ArrayList currentlistofid;
       
-        private string transactions;
 
       //  MySqlConnection MyConn;
 

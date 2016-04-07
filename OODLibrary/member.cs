@@ -51,7 +51,7 @@ namespace OODLibrary
             MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
             MySqlDataReader MyReader;
             MyConn.Open();
-            MyReader = MyCommand.ExecuteReader();
+           
 
             //check if the member has already borrowed books
             string query2 = "SELECT userdata.IDMember FROM userdata, borrow WHERE userdata.IDMember = borrow.IDMember AND userdata.IDMember = '" + IDMember + "'";
