@@ -13,15 +13,12 @@ namespace OODLibrary
         private string books;
         private string cds;
         private string vidtapes;
-        private string members;
         private string connection = "datasource=localhost;database=oodlibrary;port=;username=root;password=";
         private string borrowedBooks;
         private string borrowedCDs;
         private string borrowedTapes;
-
-        private string transactions;
-
         MySqlConnection MyConn;
+
         public void Connect()
         {
             try
@@ -84,92 +81,6 @@ namespace OODLibrary
                 vidtapes += (MyReader["IDTape"].ToString() + " " + MyReader["TapeName"].ToString() + "-");
             }
             return vidtapes;
-        }
-
-        public String getAllMembers()
-        {
-            MyConn = new MySqlConnection(connection);
-            string query1 = "SELECT IDMember, MemberName FROM userdata";
-            MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
-            MySqlDataReader MyReader;
-            MyConn.Open();
-            MyReader = MyCommand.ExecuteReader();
-
-            members = null;
-            while (MyReader.Read())
-            {
-                members += (MyReader["IDMember"].ToString() + " " + MyReader["MemberName"].ToString() + "-");
-            }
-            return members;
-        }
-
-
-        /// <summary>
-        /// Gets all transactions
-        /// </summary>
-        /// <returns>string of tranactions</returns>
-        public String getTransactions()
-        {
-
-            transactions = "";
-            MySqlConnection MyConn = new MySqlConnection(connection);
-            string query1 = "SELECT * FROM transactions";
-            MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
-            MySqlDataReader MyReader;
-            MyConn.Open();
-            MyReader = MyCommand.ExecuteReader();
-            while (MyReader.Read())
-            {
-                transactions += ("TransID: "+MyReader["id"].ToString() + "  Member_id: " + MyReader["c_id"].ToString() + " Amount: " +MyReader["money_transferred"].ToString() +" Type: "+ MyReader["transaction_type"].ToString()+"-");
-            }
-            return transactions;
-        }
-
-        public double getTransTotal()
-        {
-            double tempTotal = 0.0;
-            MySqlConnection MyConn = new MySqlConnection(connection);
-            string query1 = "SELECT * FROM transactions";
-            MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
-            MySqlDataReader MyReader;
-            MyConn.Open();
-            MyReader = MyCommand.ExecuteReader();
-            while (MyReader.Read())
-            {
-                tempTotal += Convert.ToDouble(MyReader["money_transferred"].ToString());
-            }
-            return tempTotal;
-        }
-        public void deleteMember(string IDMember)
-        {
-            MyConn = new MySqlConnection(connection);
-            string query1 = "DELETE FROM userdata WHERE IDMember =" + "'" + IDMember + "'";
-            MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
-            MySqlDataReader MyReader;
-            MyConn.Open();
-            MyReader = MyCommand.ExecuteReader();
-
-        }
-
-        public void addBorrow(string IDMember, string IDBook, string IDCD, string IDTape)
-        {
-            MyConn = new MySqlConnection(connection);
-        
-            string query1 = "INSERT INTO borrow (IDMember,IDBook,IDCD,IDTape,StartDate) VALUES(" + IDMember + "," + IDBook + "," + IDCD + "," + IDTape + "," + "'" + DateTime.Now.ToString("yyyy-MM-dd") + "')";
-            MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
-            MySqlDataReader MyReader;
-            MyConn.Open();
-            MyReader = MyCommand.ExecuteReader();
-        }
-
-        public void addMember(string name, string age)
-        {
-            MyConn = new MySqlConnection(connection);
-            string query1 = "INSERT INTO userdata (MemberName,Age) VALUES(" + "'" + name + "'" + "," + "'" + age + "'" + ")";
-            MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
-            MySqlDataReader MyReader;
-            MyConn.Open();
-            MyReader = MyCommand.ExecuteReader();
         }
 
         public String showBorrowedBooks()
@@ -274,34 +185,6 @@ namespace OODLibrary
                 MyReader = MyCommand.ExecuteReader();
             }
   
-        public void setBookBorrowedNotAvailable(String bookId)
-        {
-            MyConn = new MySqlConnection(connection);
-            string query1 = "UPDATE books SET Availability = 'No' WHERE IDBook = " + "'" + bookId + "'";
-            MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
-            MySqlDataReader MyReader;
-            MyConn.Open();
-            MyReader = MyCommand.ExecuteReader();
-        }
-
-        public void setCDBorrowedNotAvailable(String cdId)
-        {
-            MyConn = new MySqlConnection(connection);
-            string query1 = "UPDATE cd SET Availability = 'No' WHERE IDBook = " + "'" + cdId + "'";
-            MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
-            MySqlDataReader MyReader;
-            MyConn.Open();
-            MyReader = MyCommand.ExecuteReader();
-        }
-
-        public void setTapeBorrowedNotAvailable(String tapeId)
-        {
-            MyConn = new MySqlConnection(connection);
-            string query1 = "UPDATE videotape SET Availability = 'No' WHERE IDBook = " + "'" + tapeId + "'";
-            MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
-            MySqlDataReader MyReader;
-            MyConn.Open();
-            MyReader = MyCommand.ExecuteReader();
-        }
+       
     }
 }
