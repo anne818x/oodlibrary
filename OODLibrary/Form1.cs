@@ -243,8 +243,7 @@ namespace OODLibrary
             int bookId = Int32.Parse(splitstring[0]);
             string name = splitstring[1];
             string type = splitstring[2];
-            int borrowPeriod = Int32.Parse(splitstring[3].Substring(13, 2));
-            DateTime startDate = Convert.ToDateTime(splitstring[4]);
+            DateTime startDate = Convert.ToDateTime(splitstring[3]);
             int daysPassed = Convert.ToInt32((DateTime.Now - Convert.ToDateTime(startDate)).TotalDays);
             
             if (type == "Novel" && daysPassed <=21)
@@ -285,29 +284,21 @@ namespace OODLibrary
             string name = splitstring[1];
             string type = splitstring[2];
             DateTime releaseDate = Convert.ToDateTime(splitstring[3]);
-            DateTime startDate = Convert.ToDateTime(splitstring[5]);
+            DateTime startDate = Convert.ToDateTime(splitstring[4]);
 
             int daysPassed = Convert.ToInt32((DateTime.Now - Convert.ToDateTime(startDate)).TotalDays);
-            TimeSpan age = (DateTime.Now - releaseDate);
+            int age = ((DateTime.Now - releaseDate).Days);
 
-            MessageBox.Show(age.ToString());
-            if (type == "Classical" && daysPassed <= 21)
+            if (age <= 365)
             {
-                MessageBox.Show("You are returning this CD on time", "Details", MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-                connection.returnCD(cdId);
-                connection.setCDAvailable(cdId);
-            }
-            else if (type == "Popular" && daysPassed <= 30)
-            {
-                MessageBox.Show("You are returning this CD on time", "Details", MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-                connection.returnCD(cdId);
-                connection.setCDAvailable(cdId);
+                age = 0;
             }
             else
             {
-                DialogResult result = MessageBox.Show("You have to pay € " + calculateFee(daysPassed, type, 0) + "in fees", "Pay Fee", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                age /= 365;
+            }
+
+                DialogResult result = MessageBox.Show("You have to pay € " + calculateFee(daysPassed, type, age) + " in fees", "Pay Fee", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                 if (result == DialogResult.Yes)
                 {
                     MessageBox.Show("You have successfully paid and returned your CD!", "Details", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -318,12 +309,29 @@ namespace OODLibrary
                 {
                     MessageBox.Show("Please pay your fees!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                 }
-            }
         }
 
         private void returnTape_Click(object sender, EventArgs e)
         {
+            string tapeSelected = returnList.SelectedItem.ToString();
+            string[] splitstring = tapeSelected.Split('-');
+            int tapeId = Int32.Parse(splitstring[0]);
+            string name = splitstring[1];
+            string type = splitstring[2];
+            DateTime startDate = Convert.ToDateTime(splitstring[4]);
+            int daysPassed = Convert.ToInt32((DateTime.Now - Convert.ToDateTime(startDate)).TotalDays);
 
+            DialogResult result = MessageBox.Show("You have to pay € " + calculateFee(daysPassed, type, 0) + " in fees", "Pay Fee", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            if (result == DialogResult.Yes)
+            {
+                MessageBox.Show("You have successfully paid and returned your videotape!", "Details", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                connection.returnTape(tapeId);
+                connection.setTapeAvailable(tapeId);
+            }
+            else
+            {
+                MessageBox.Show("Please pay your fees!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }
         }
 
         /// <summary>

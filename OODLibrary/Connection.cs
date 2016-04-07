@@ -188,7 +188,7 @@ namespace OODLibrary
         public String showBorrowedBooks()
         {
             MySqlConnection MyConn = new MySqlConnection(connection);
-            string query = "SELECT books.IDBook, books.BookName, books.Type, borrow.IDBook, borrow.StartDate, borrow.EndDate FROM books INNER JOIN borrow ON books.IDBook = borrow.IDBook";
+            string query = "SELECT books.IDBook, books.BookName, books.Type, borrow.IDBook, borrow.StartDate FROM books INNER JOIN borrow ON books.IDBook = borrow.IDBook";
             MySqlCommand MyCommand = new MySqlCommand(query, MyConn);
             MySqlDataReader MyReader;
             MyConn.Open();
@@ -196,11 +196,7 @@ namespace OODLibrary
             borrowedBooks = null;
             while (MyReader.Read())
             {
-                string startDate = MyReader["StartDate"].ToString();
-                string endDate = MyReader["EndDate"].ToString();
-                var totalDays = (Convert.ToDateTime(endDate) - Convert.ToDateTime(startDate)).TotalDays;
-
-                borrowedBooks += (MyReader["IDBook"].ToString() + " - " + MyReader["BookName"].ToString() + " -" + MyReader["Type"].ToString() + "- " + "lend period:" + totalDays + " days" + " - " + MyReader["StartDate"].ToString() + "/");
+                borrowedBooks += (MyReader["IDBook"].ToString() + " - " + MyReader["BookName"].ToString() + " -" + MyReader["Type"].ToString() + "- " +  MyReader["StartDate"].ToString() + "/");
             }
             return borrowedBooks;
         }
@@ -208,7 +204,7 @@ namespace OODLibrary
         public String showBorrowedCDs()
         {
             MySqlConnection MyConn = new MySqlConnection(connection);
-            string query = "SELECT cd.IDCD, cd.CDName, cd.Type, cd.ReleaseDate, borrow.IDCD, borrow.StartDate, borrow.EndDate FROM cd INNER JOIN borrow ON cd.IDCD = borrow.IDCD";
+            string query = "SELECT cd.IDCD, cd.CDName, cd.Type, cd.ReleaseDate, borrow.IDCD, borrow.StartDate FROM cd INNER JOIN borrow ON cd.IDCD = borrow.IDCD";
             MySqlCommand MyCommand = new MySqlCommand(query, MyConn);
             MySqlDataReader MyReader;
             MyConn.Open();
@@ -216,11 +212,7 @@ namespace OODLibrary
             borrowedCDs = null;
             while (MyReader.Read())
             {
-                string startDate = MyReader["StartDate"].ToString();
-                string endDate = MyReader["EndDate"].ToString();
-                var totalDays = (Convert.ToDateTime(endDate) - Convert.ToDateTime(startDate)).TotalDays;
-
-                borrowedCDs += (MyReader["IDCD"].ToString() + " - " + MyReader["CDName"].ToString() + " -" + MyReader["Type"].ToString() + "- " + MyReader["ReleaseDate"].ToString() + " - " + "lend period:" + totalDays + " days" + " - " + MyReader["StartDate"].ToString() + "/");
+                borrowedCDs += (MyReader["IDCD"].ToString() + " - " + MyReader["CDName"].ToString() + " -" + MyReader["Type"].ToString() + "- " + MyReader["ReleaseDate"].ToString() + " - " + MyReader["StartDate"].ToString() + "/");
             }
             return borrowedCDs;
         }
@@ -228,7 +220,7 @@ namespace OODLibrary
         public String showBorrowedTapes()
         {
             MySqlConnection MyConn = new MySqlConnection(connection);
-            string query = "SELECT videotape.IDTape, videotape.TapeName, videotape.Type, borrow.IDTape, borrow.StartDate, borrow.EndDate FROM videotape INNER JOIN borrow ON videotape.IDTape = borrow.IDTape";
+            string query = "SELECT videotape.IDTape, videotape.TapeName, videotape.Type, borrow.IDTape, borrow.StartDate FROM videotape INNER JOIN borrow ON videotape.IDTape = borrow.IDTape";
             MySqlCommand MyCommand = new MySqlCommand(query, MyConn);
             MySqlDataReader MyReader;
             MyConn.Open();
@@ -236,11 +228,7 @@ namespace OODLibrary
             borrowedTapes = "";
             while (MyReader.Read())
             {
-                string startDate = MyReader["StartDate"].ToString();
-                string endDate = MyReader["EndDate"].ToString();
-                var totalDays = (Convert.ToDateTime(endDate) - Convert.ToDateTime(startDate)).TotalDays;
-
-                borrowedTapes += (MyReader["TapeName"].ToString() + " - " + MyReader["Type"].ToString() + " - " + "lend period:" + totalDays + " days" + " - " + MyReader["StartDate"].ToString() + "/");
+                borrowedTapes += (MyReader["IDTape"].ToString() + " - " + MyReader["TapeName"].ToString() + " -" + MyReader["Type"].ToString() + " - " + MyReader["StartDate"].ToString() + "/");
             }
             return borrowedTapes;
         }
@@ -286,7 +274,27 @@ namespace OODLibrary
                 MyConn.Open();
                 MyReader = MyCommand.ExecuteReader();
             }
-  
+
+        public void returnTape(int tapeId)
+        {
+            MyConn = new MySqlConnection(connection);
+            string query1 = "DELETE FROM borrow WHERE IDTape =" + "'" + tapeId + "'";
+            MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
+            MySqlDataReader MyReader;
+            MyConn.Open();
+            MyReader = MyCommand.ExecuteReader();
+        }
+
+        public void setTapeAvailable(int tapeId)
+        {
+            MyConn = new MySqlConnection(connection);
+            string query1 = "UPDATE videotape SET Availability = 'Yes' WHERE IDTape = " + "'" + tapeId + "'";
+            MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
+            MySqlDataReader MyReader;
+            MyConn.Open();
+            MyReader = MyCommand.ExecuteReader();
+        }
+
         public void setBookBorrowedNotAvailable(String bookId)
         {
             MyConn = new MySqlConnection(connection);
