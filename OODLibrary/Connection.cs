@@ -19,22 +19,22 @@ namespace OODLibrary
         private string borrowedBooks;
         private string borrowedCDs;
         private string borrowedTapes;
-<<<<<<< HEAD
+
         MySqlConnection MyConn;
 
-=======
+
         private string reservations;
         private ArrayList currentlistofid;
       
         private string transactions;
 
-        MySqlConnection MyConn;
+      //  MySqlConnection MyConn;
 
         public Connection()
         {
             currentlistofid = new ArrayList();
         }
->>>>>>> f9cd5b29813b3b4e0176022b0d5cd3e69555b7f4
+
         public void Connect()
         {
             try
@@ -205,9 +205,7 @@ namespace OODLibrary
                 MyReader = MyCommand.ExecuteReader();
             }
   
-<<<<<<< HEAD
-       
-=======
+
         public void setBookBorrowedNotAvailable(String bookId)
         {
             MyConn = new MySqlConnection(connection);
@@ -267,6 +265,6 @@ namespace OODLibrary
             MyReader = MyCommand.ExecuteReader();
         }
 
->>>>>>> f9cd5b29813b3b4e0176022b0d5cd3e69555b7f4
+
     }
 }
