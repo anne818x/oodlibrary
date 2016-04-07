@@ -14,7 +14,6 @@ C:\Users\Kaloyan\Documents\oodlibrary\OODLibrary\obj\Debug\OODLibrary.pdb
 C:\Users\Kaloyan\Documents\oodlibrary\OODLibrary\bin\Debug\OODLibrary.exe
 C:\Users\Kaloyan\Documents\oodlibrary\OODLibrary\bin\Debug\OODLibrary.pdb
 C:\Users\Kaloyan\Documents\oodlibrary\OODLibrary\obj\Debug\OODLibrary.csprojResolveAssemblyReference.cache
-C:\Users\Kaloyan\Documents\oodlibrary\OODLibrary\obj\Debug\OODLibrary.Form1.resources
 C:\Users\Kaloyan\Documents\oodlibrary\OODLibrary\obj\Debug\OODLibrary.Properties.Resources.resources
 C:\Users\Kaloyan\Documents\oodlibrary\OODLibrary\obj\Debug\OODLibrary.csproj.GenerateResource.Cache
 C:\Users\Dunstane\Documents\oodlibrary\OODLibrary\bin\Debug\OODLibrary.exe.config
@@ -45,3 +44,4 @@ C:\Users\emily\Documents\GitHub\oodlibrary\OODLibrary\obj\Debug\OODLibrary.cspro
 C:\Users\emily\Documents\GitHub\oodlibrary\OODLibrary\obj\Debug\OODLibrary.Properties.Resources.resources
 C:\Users\emily\Documents\GitHub\oodlibrary\OODLibrary\obj\Debug\OODLibrary.csproj.GenerateResource.Cache
 C:\Users\emily\Documents\GitHub\oodlibrary\OODLibrary\obj\Debug\OODLibrary.Library.resources
+C:\Users\Kaloyan\Documents\oodlibrary\OODLibrary\obj\Debug\OODLibrary.Library.resources

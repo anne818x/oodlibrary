@@ -71,10 +71,16 @@ namespace OODLibrary
         {
             returnList.Items.Clear();
             String booksString = connection.showBorrowedBooks();
-
-            foreach (string book in booksString.Split('/'))
+            if (String.IsNullOrEmpty(booksString))
             {
-                returnList.Items.Add(book);
+                MessageBox.Show("No Books Borrowed!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                foreach (string book in booksString.Split('/'))
+                {
+                    returnList.Items.Add(book);
+                }
             }
         }
 
@@ -82,10 +88,17 @@ namespace OODLibrary
         {
             returnList.Items.Clear();
             String cdsString = connection.showBorrowedCDs();
-
-            foreach (string cd in cdsString.Split('/'))
+            cdsString = connection.showBorrowedCDs();
+            if (String.IsNullOrEmpty(cdsString))
             {
-                returnList.Items.Add(cd);
+                MessageBox.Show("No CDs Borrowed!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                foreach (string cd in cdsString.Split('/'))
+                {
+                    returnList.Items.Add(cd);
+                }
             }
         }
 
@@ -93,11 +106,17 @@ namespace OODLibrary
         {
             returnList.Items.Clear();
             String tapesString = connection.showBorrowedTapes();
-
-            foreach (string tape in tapesString.Split('/'))
+            if (String.IsNullOrEmpty(tapesString))
             {
-                returnList.Items.Add(tape);
+                MessageBox.Show("No Videotapes Borrowed!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+            else
+            {
+                foreach (string tape in tapesString.Split('/'))
+                {
+                    returnList.Items.Add(tape);
+                } 
+            } 
         }
 
         private void button1_Click(object sender, EventArgs e)
