@@ -15,6 +15,10 @@ namespace OODLibrary
     {
 
         private Connection connection = new Connection();
+        private member member = new member();
+        private Transaction Transaction = new Transaction();
+        private Borrowed Borrowed = new Borrowed();
+
         private int switchBorrow = 0;
         
         public Form1()
@@ -33,35 +37,16 @@ namespace OODLibrary
         {
             memberList.Items.Clear();
 
-            String memberString = connection.getAllMembers();
-            foreach (String member in memberString.Split('-'))
-            {
-                memberList.Items.Add(member);
-            }
+            String memberString = member.getAllMembers();
+            foreach (String mem in memberString.Split('-'))
+                memberList.Items.Add(mem);
         }
-/// <summary>
-/// revenue report
-/// </summary>
-        public void showReport()
-        {
-            /*generate report to show to team*/
-            ArrayList tempArray = new ArrayList();
-            var Message="";
-            String transactions = connection.getTransactions();
 
-            foreach (String transaction in transactions.Split('-'))
-            {
-                Message += transaction+ "\n" ;
-            }
-
-            Message += "Total Revenue:   " + connection.getTransTotal().ToString();
-            MessageBox.Show(Message);
-        }
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
             
-            connection.deleteMember(memberList.SelectedItem.ToString());
+            member.deleteMember(memberList.SelectedItem.ToString());
             memberShow();
         }
 
@@ -73,7 +58,7 @@ namespace OODLibrary
         private void addBtn_Click(object sender, EventArgs e)
         {
             
-            connection.addMember(nameTxt.Text, ageTxt.Text);
+            member.addMember(nameTxt.Text, ageTxt.Text);
             
         }
 
@@ -117,7 +102,7 @@ namespace OODLibrary
 
         private void button1_Click(object sender, EventArgs e)
         {
-            showReport();
+            Transaction.showReport();
         }
 
         public void selectItem()
@@ -140,24 +125,24 @@ namespace OODLibrary
                     if (switchBorrow == 0)
                     {
                         
-                        connection.addBorrow("'" + cardNrBox.Text + "'", "'" + borrowList.SelectedItem.ToString() + "'", nullString, nullString);
-                        connection.setBookBorrowedNotAvailable(borrowList.SelectedItem.ToString());
+                        Borrowed.addBorrow("'" + cardNrBox.Text + "'", "'" + borrowList.SelectedItem.ToString() + "'", nullString, nullString);
+                        Borrowed.setBookBorrowedNotAvailable(borrowList.SelectedItem.ToString());
                         cardNrBox.Clear();
                     }
 
                     else if (switchBorrow == 1)
                     {
 
-                        connection.addBorrow("'" + cardNrBox.Text + "'", nullString, "'" + borrowList.SelectedItem.ToString() + "'", nullString);
-                        connection.setCDBorrowedNotAvailable(borrowList.SelectedItem.ToString());
+                        Borrowed.addBorrow("'" + cardNrBox.Text + "'", nullString, "'" + borrowList.SelectedItem.ToString() + "'", nullString);
+                        Borrowed.setCDBorrowedNotAvailable(borrowList.SelectedItem.ToString());
                         cardNrBox.Clear();
                     }
 
                     else if (switchBorrow == 2)
                     {
 
-                        connection.addBorrow("'" + cardNrBox.Text + "'", nullString, nullString, "'" + borrowList.SelectedItem.ToString() + "'");
-                        connection.setTapeBorrowedNotAvailable(borrowList.SelectedItem.ToString());
+                        Borrowed.addBorrow("'" + cardNrBox.Text + "'", nullString, nullString, "'" + borrowList.SelectedItem.ToString() + "'");
+                        Borrowed.setTapeBorrowedNotAvailable(borrowList.SelectedItem.ToString());
                         cardNrBox.Clear();
                     }
                 }
