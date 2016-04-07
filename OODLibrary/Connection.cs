@@ -242,10 +242,17 @@ namespace OODLibrary
         {
             return this.currentlistofid;
         }
+
+        /// <summary>
+        /// gets selected index and compares it to  list here to figure out specfic list to generate
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
         public string getReservations(int id, string type)
         {
             MySqlConnection MyConn = new MySqlConnection(connection);
-            string query = "SELECT * FROM reservations WHERE id=" + id.ToString() + " AND type=" + type;
+            string query = "SELECT * FROM reservations WHERE item_id=" + currentlistofid[id] + " AND type = '"+type+"'";
             MySqlCommand MyCommand = new MySqlCommand(query, MyConn);
             MySqlDataReader MyReader;
             MyConn.Open();
@@ -253,15 +260,23 @@ namespace OODLibrary
             reservations = "";
             while (MyReader.Read())
             {
-                reservations = "not set yet";
+                reservations+= (" ID:"+MyReader["reserv_id"].ToString() + " - Member: " + MyReader["c_ID"].ToString() + " - Type: " + MyReader["Type"].ToString() + " - ItemID:  " + MyReader["item_id"].ToString() + " - Reserve Date:  " + MyReader["reservedate"].ToString()+ "?");
+            
             }
             return reservations;
         }
 
+
+        /// <summary>
+        /// places a reservation along with an ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="c_id"></param>
+        /// <param name="type"></param>
         public void placeReservation(int id, int c_id,  string type)
         {
             MySqlConnection MyConn = new MySqlConnection(connection);
-            string query = "INSERT INTO reservations VALUES (null," + c_id + "0.5 ," + c_id.ToString() +","+type +"null)"; 
+            string query = "INSERT INTO reservations VALUES (null," + c_id +","+ "0.5 ," + currentlistofid[id] +","+"'" +type + "'"+ ",CURRENT_TIMESTAMP)"; 
             MySqlCommand MyCommand = new MySqlCommand(query, MyConn);
             MySqlDataReader MyReader;
             MyConn.Open();

@@ -18,6 +18,9 @@ namespace OODLibrary
         private member member = new member();
         private Transaction Transaction = new Transaction();
         private Borrowed Borrowed = new Borrowed();
+        enum rstate {book,cd,video,notset};
+        rstate reservestate;
+
 
         private int switchBorrow = 0;
         
@@ -472,13 +475,21 @@ namespace OODLibrary
         {
             if (this.reservescreenLB.Visible == true)
             {
-                reserveshowhide();
+                this.reservescreenLB.Hide();
             }
             else
             {
                 if (this.reserveselectLB.SelectedItem != null)
                 {
-                    reserveshowhide();
+
+                    reservescreenLB.Items.Clear();
+                    foreach (String item in connection.getReservations(reserveselectLB.SelectedIndex,reservestate.ToString()).Split('?'))
+                    {
+                        reservescreenLB.Items.Add(item);
+                    }
+                    this.reservescreenLB.Show();
+            
+
                 }
                 else { MessageBox.Show("please select an Item from the above list"); }
             }
@@ -509,6 +520,7 @@ namespace OODLibrary
             {
                 reserveselectLB.Items.Add(book);
             }
+            reservestate = rstate.book;
 
         }
 
@@ -522,6 +534,7 @@ namespace OODLibrary
             {
                 reserveselectLB.Items.Add(cd);
             }
+            reservestate = rstate.cd;
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -534,6 +547,30 @@ namespace OODLibrary
             {
                 reserveselectLB.Items.Add(tape);
             }
+            reservestate = rstate.video;
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            int x;
+            if (int.TryParse(this.textBox1.Text, out x))
+            {
+                if (this.reserveselectLB.SelectedItem != null)
+                {
+                    this.connection.placeReservation(this.reserveselectLB.SelectedIndex, x, this.reservestate.ToString());
+                    MessageBox.Show("Reservation ADDED");
+                }
+                else
+                {
+                    MessageBox.Show("please select an item");
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("please fill in a an integer");
+            }
+        }
+        
     }
 }

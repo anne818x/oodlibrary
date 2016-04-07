@@ -409,9 +409,9 @@
             // reservescreenLB
             // 
             this.reservescreenLB.FormattingEnabled = true;
-            this.reservescreenLB.Location = new System.Drawing.Point(84, 144);
+            this.reservescreenLB.Location = new System.Drawing.Point(9, 144);
             this.reservescreenLB.Name = "reservescreenLB";
-            this.reservescreenLB.Size = new System.Drawing.Size(251, 56);
+            this.reservescreenLB.Size = new System.Drawing.Size(385, 56);
             this.reservescreenLB.TabIndex = 23;
             this.reservescreenLB.Visible = false;
             // 
@@ -433,6 +433,7 @@
             this.button1.TabIndex = 21;
             this.button1.Text = "reserve";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // label5
             // 
