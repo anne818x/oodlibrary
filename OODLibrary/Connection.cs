@@ -5,11 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace OODLibrary
 {
     class Connection
     {
+
         private string books;
         private string cds;
         private string vidtapes;
@@ -17,8 +19,22 @@ namespace OODLibrary
         private string borrowedBooks;
         private string borrowedCDs;
         private string borrowedTapes;
+<<<<<<< HEAD
         MySqlConnection MyConn;
 
+=======
+        private string reservations;
+        private ArrayList currentlistofid;
+      
+        private string transactions;
+
+        MySqlConnection MyConn;
+
+        public Connection()
+        {
+            currentlistofid = new ArrayList();
+        }
+>>>>>>> f9cd5b29813b3b4e0176022b0d5cd3e69555b7f4
         public void Connect()
         {
             try
@@ -34,6 +50,7 @@ namespace OODLibrary
 
         public String getAllBooks()
         {
+            currentlistofid.Clear();
             MyConn = new MySqlConnection(connection);
             string query1 = "SELECT IDBook, BookName FROM books";
             MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
@@ -43,6 +60,7 @@ namespace OODLibrary
             books = null;
             while (MyReader.Read())
             {
+                currentlistofid.Add(MyReader["IDBook"].ToString());
                 books += (MyReader["IDBook"].ToString() + " " + MyReader["BookName"].ToString() + "-");
             }
             return books;
@@ -50,7 +68,7 @@ namespace OODLibrary
 
         public String getAllCDs()
         {
-
+            currentlistofid.Clear();
             MyConn = new MySqlConnection(connection);
             string query1 = "SELECT IDCD, CDName FROM cd";
             MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
@@ -60,7 +78,7 @@ namespace OODLibrary
             cds = null;
             while (MyReader.Read())
             {
-
+                currentlistofid.Add(MyReader["IDCD"].ToString());
                 cds += (MyReader["IDCD"].ToString() + " " + MyReader["CDName"].ToString() + "-");
             }
             return cds;
@@ -68,6 +86,7 @@ namespace OODLibrary
 
         public String getAllVidTapes()
         {
+            currentlistofid.Clear();
             MySqlConnection MyConn = new MySqlConnection(connection);
             string query1 = "SELECT IDTape, TapeName FROM videotape";
             MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
@@ -78,6 +97,7 @@ namespace OODLibrary
             vidtapes = null;
             while (MyReader.Read())
             {
+                currentlistofid.Add(MyReader["IDTape"].ToString());
                 vidtapes += (MyReader["IDTape"].ToString() + " " + MyReader["TapeName"].ToString() + "-");
             }
             return vidtapes;
@@ -185,6 +205,68 @@ namespace OODLibrary
                 MyReader = MyCommand.ExecuteReader();
             }
   
+<<<<<<< HEAD
        
+=======
+        public void setBookBorrowedNotAvailable(String bookId)
+        {
+            MyConn = new MySqlConnection(connection);
+            string query1 = "UPDATE books SET Availability = 'No' WHERE IDBook = " + "'" + bookId + "'";
+            MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
+            MySqlDataReader MyReader;
+            MyConn.Open();
+            MyReader = MyCommand.ExecuteReader();
+        }
+
+        public void setCDBorrowedNotAvailable(String cdId)
+        {
+            MyConn = new MySqlConnection(connection);
+            string query1 = "UPDATE cd SET Availability = 'No' WHERE IDBook = " + "'" + cdId + "'";
+            MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
+            MySqlDataReader MyReader;
+            MyConn.Open();
+            MyReader = MyCommand.ExecuteReader();
+        }
+
+        public void setTapeBorrowedNotAvailable(String tapeId)
+        {
+            MyConn = new MySqlConnection(connection);
+            string query1 = "UPDATE videotape SET Availability = 'No' WHERE IDBook = " + "'" + tapeId + "'";
+            MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
+            MySqlDataReader MyReader;
+            MyConn.Open();
+            MyReader = MyCommand.ExecuteReader();
+        }
+        public ArrayList giveCurrentSelectionids()
+        {
+            return this.currentlistofid;
+        }
+        public string getReservations(int id, string type)
+        {
+            MySqlConnection MyConn = new MySqlConnection(connection);
+            string query = "SELECT * FROM reservations WHERE id=" + id.ToString() + " AND type=" + type;
+            MySqlCommand MyCommand = new MySqlCommand(query, MyConn);
+            MySqlDataReader MyReader;
+            MyConn.Open();
+            MyReader = MyCommand.ExecuteReader();
+            reservations = "";
+            while (MyReader.Read())
+            {
+                reservations = "not set yet";
+            }
+            return reservations;
+        }
+
+        public void placeReservation(int id, int c_id,  string type)
+        {
+            MySqlConnection MyConn = new MySqlConnection(connection);
+            string query = "INSERT INTO reservations VALUES (null," + c_id + "0.5 ," + c_id.ToString() +","+type +"null)"; 
+            MySqlCommand MyCommand = new MySqlCommand(query, MyConn);
+            MySqlDataReader MyReader;
+            MyConn.Open();
+            MyReader = MyCommand.ExecuteReader();
+        }
+
+>>>>>>> f9cd5b29813b3b4e0176022b0d5cd3e69555b7f4
     }
 }

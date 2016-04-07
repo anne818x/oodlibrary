@@ -437,5 +437,78 @@ namespace OODLibrary
                 return -1;
             }
         }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void reservetoggle_Click(object sender, EventArgs e)
+        {
+            if (this.reservescreenLB.Visible == true)
+            {
+                reserveshowhide();
+            }
+            else
+            {
+                if (this.reserveselectLB.SelectedItem != null)
+                {
+                    reserveshowhide();
+                }
+                else { MessageBox.Show("please select an Item from the above list"); }
+            }
+        }
+
+        private void reserveshowhide()
+        {
+            if (this.reservescreenLB.Visible == true)
+            {
+                reservescreenLB.Items.Clear();
+                this.reservescreenLB.Visible = false;
+            }
+            else
+            {
+                reservescreenLB.Items.Clear();
+                this.reserveselectLB.ClearSelected();
+                this.reservescreenLB.Visible = true;
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            reserveselectLB.Items.Clear();
+            this.reservescreenLB.Hide();
+            String booksString = connection.getAllBooks();
+
+            foreach (String book in booksString.Split('-'))
+            {
+                reserveselectLB.Items.Add(book);
+            }
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+            reserveselectLB.Items.Clear();
+            this.reservescreenLB.Hide();
+            String cdString = connection.getAllCDs();
+            foreach (String cd in cdString.Split('-'))
+            {
+                reserveselectLB.Items.Add(cd);
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            reserveselectLB.Items.Clear();
+            this.reservescreenLB.Hide();
+            String tapeString = connection.getAllVidTapes();
+
+            foreach (String tape in tapeString.Split('-'))
+            {
+                reserveselectLB.Items.Add(tape);
+            }
+        }
     }
 }
