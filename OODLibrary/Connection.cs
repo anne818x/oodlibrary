@@ -5,11 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace OODLibrary
 {
     class Connection
     {
+
         private string books;
         private string cds;
         private string vidtapes;
@@ -18,10 +20,17 @@ namespace OODLibrary
         private string borrowedBooks;
         private string borrowedCDs;
         private string borrowedTapes;
-
+        private string reservations;
+        private ArrayList currentlistofid;
+      
         private string transactions;
 
         MySqlConnection MyConn;
+
+        public Connection()
+        {
+            currentlistofid = new ArrayList();
+        }
         public void Connect()
         {
             try
@@ -37,6 +46,7 @@ namespace OODLibrary
 
         public String getAllBooks()
         {
+            currentlistofid.Clear();
             MyConn = new MySqlConnection(connection);
             string query1 = "SELECT IDBook, BookName FROM books";
             MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
@@ -46,6 +56,7 @@ namespace OODLibrary
             books = null;
             while (MyReader.Read())
             {
+                currentlistofid.Add(MyReader["IDBook"].ToString());
                 books += (MyReader["IDBook"].ToString() + " " + MyReader["BookName"].ToString() + "-");
             }
             return books;
@@ -53,7 +64,7 @@ namespace OODLibrary
 
         public String getAllCDs()
         {
-
+            currentlistofid.Clear();
             MyConn = new MySqlConnection(connection);
             string query1 = "SELECT IDCD, CDName FROM cd";
             MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
@@ -63,7 +74,7 @@ namespace OODLibrary
             cds = null;
             while (MyReader.Read())
             {
-
+                currentlistofid.Add(MyReader["IDCD"].ToString());
                 cds += (MyReader["IDCD"].ToString() + " " + MyReader["CDName"].ToString() + "-");
             }
             return cds;
@@ -71,6 +82,7 @@ namespace OODLibrary
 
         public String getAllVidTapes()
         {
+            currentlistofid.Clear();
             MySqlConnection MyConn = new MySqlConnection(connection);
             string query1 = "SELECT IDTape, TapeName FROM videotape";
             MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
@@ -81,6 +93,7 @@ namespace OODLibrary
             vidtapes = null;
             while (MyReader.Read())
             {
+                currentlistofid.Add(MyReader["IDTape"].ToString());
                 vidtapes += (MyReader["IDTape"].ToString() + " " + MyReader["TapeName"].ToString() + "-");
             }
             return vidtapes;
@@ -303,5 +316,25 @@ namespace OODLibrary
             MyConn.Open();
             MyReader = MyCommand.ExecuteReader();
         }
+        public ArrayList giveCurrentSelectionids()
+        {
+            return this.currentlistofid;
+        }
+        public string getReservations(int id, string type)
+        {
+            MySqlConnection MyConn = new MySqlConnection(connection);
+            string query = "SELECT * FROM reservations WHERE id=" +id.ToString()+" AND type=" +type;
+            MySqlCommand MyCommand = new MySqlCommand(query, MyConn);
+            MySqlDataReader MyReader;
+            MyConn.Open();
+            MyReader = MyCommand.ExecuteReader();
+            borrowedTapes = "";
+            while (MyReader.Read())
+            {
+                reservations = "not set yet";
+            }
+            return reservations;
+        }
+
     }
 }

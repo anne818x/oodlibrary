@@ -51,17 +51,29 @@
             this.borrowBookBtn = new System.Windows.Forms.Button();
             this.borrowList = new System.Windows.Forms.ListBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.returnTape = new System.Windows.Forms.Button();
+            this.returnCD = new System.Windows.Forms.Button();
             this.returnBooks = new System.Windows.Forms.Button();
             this.borrowedTapes = new System.Windows.Forms.Button();
             this.borrowedCD = new System.Windows.Forms.Button();
             this.borrowedBooks = new System.Windows.Forms.Button();
             this.returnList = new System.Windows.Forms.ListBox();
-            this.returnCD = new System.Windows.Forms.Button();
-            this.returnTape = new System.Windows.Forms.Button();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.reserveselectLB = new System.Windows.Forms.ListBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.reservetoggle = new System.Windows.Forms.Button();
+            this.reservescreenLB = new System.Windows.Forms.ListBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // deleteBtn
@@ -128,6 +140,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(22, 14);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -305,6 +318,26 @@
             this.tabPage3.Text = "Return Page";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // returnTape
+            // 
+            this.returnTape.Location = new System.Drawing.Point(281, 210);
+            this.returnTape.Name = "returnTape";
+            this.returnTape.Size = new System.Drawing.Size(101, 42);
+            this.returnTape.TabIndex = 6;
+            this.returnTape.Text = "Return Tape";
+            this.returnTape.UseVisualStyleBackColor = true;
+            this.returnTape.Click += new System.EventHandler(this.returnTape_Click);
+            // 
+            // returnCD
+            // 
+            this.returnCD.Location = new System.Drawing.Point(149, 207);
+            this.returnCD.Name = "returnCD";
+            this.returnCD.Size = new System.Drawing.Size(101, 42);
+            this.returnCD.TabIndex = 5;
+            this.returnCD.Text = "Return CD";
+            this.returnCD.UseVisualStyleBackColor = true;
+            this.returnCD.Click += new System.EventHandler(this.returnCD_Click);
+            // 
             // returnBooks
             // 
             this.returnBooks.Location = new System.Drawing.Point(18, 207);
@@ -353,25 +386,117 @@
             this.returnList.Size = new System.Drawing.Size(388, 147);
             this.returnList.TabIndex = 0;
             // 
-            // returnCD
+            // tabPage4
             // 
-            this.returnCD.Location = new System.Drawing.Point(149, 207);
-            this.returnCD.Name = "returnCD";
-            this.returnCD.Size = new System.Drawing.Size(101, 42);
-            this.returnCD.TabIndex = 5;
-            this.returnCD.Text = "Return CD";
-            this.returnCD.UseVisualStyleBackColor = true;
-            this.returnCD.Click += new System.EventHandler(this.returnCD_Click);
+            this.tabPage4.Controls.Add(this.reservescreenLB);
+            this.tabPage4.Controls.Add(this.reservetoggle);
+            this.tabPage4.Controls.Add(this.button1);
+            this.tabPage4.Controls.Add(this.label5);
+            this.tabPage4.Controls.Add(this.textBox1);
+            this.tabPage4.Controls.Add(this.reserveselectLB);
+            this.tabPage4.Controls.Add(this.button4);
+            this.tabPage4.Controls.Add(this.label6);
+            this.tabPage4.Controls.Add(this.button5);
+            this.tabPage4.Controls.Add(this.button6);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(400, 258);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Reservation";
+            this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // returnTape
+            // button1
             // 
-            this.returnTape.Location = new System.Drawing.Point(281, 210);
-            this.returnTape.Name = "returnTape";
-            this.returnTape.Size = new System.Drawing.Size(101, 42);
-            this.returnTape.TabIndex = 6;
-            this.returnTape.Text = "Return Tape";
-            this.returnTape.UseVisualStyleBackColor = true;
-            this.returnTape.Click += new System.EventHandler(this.returnTape_Click);
+            this.button1.Location = new System.Drawing.Point(216, 233);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(142, 23);
+            this.button1.TabIndex = 21;
+            this.button1.Text = "reserve";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 242);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(94, 13);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "Your card number:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(103, 235);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(43, 20);
+            this.textBox1.TabIndex = 18;
+            // 
+            // reserveselectLB
+            // 
+            this.reserveselectLB.FormattingEnabled = true;
+            this.reserveselectLB.Location = new System.Drawing.Point(84, 19);
+            this.reserveselectLB.Name = "reserveselectLB";
+            this.reserveselectLB.Size = new System.Drawing.Size(251, 95);
+            this.reserveselectLB.TabIndex = 16;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(3, 60);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 14;
+            this.button4.Text = "CDs";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(6, 3);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(80, 13);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Choose an item";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(3, 31);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 12;
+            this.button5.Text = "Books";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(3, 89);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.TabIndex = 13;
+            this.button6.Text = "Video Tapes";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // reservetoggle
+            // 
+            this.reservetoggle.Location = new System.Drawing.Point(193, 115);
+            this.reservetoggle.Name = "reservetoggle";
+            this.reservetoggle.Size = new System.Drawing.Size(142, 23);
+            this.reservetoggle.TabIndex = 22;
+            this.reservetoggle.Text = "Show reservations";
+            this.reservetoggle.UseVisualStyleBackColor = true;
+            this.reservetoggle.Click += new System.EventHandler(this.reservetoggle_Click);
+            // 
+            // reservescreenLB
+            // 
+            this.reservescreenLB.FormattingEnabled = true;
+            this.reservescreenLB.Location = new System.Drawing.Point(84, 144);
+            this.reservescreenLB.Name = "reservescreenLB";
+            this.reservescreenLB.Size = new System.Drawing.Size(251, 56);
+            this.reservescreenLB.TabIndex = 23;
+            this.reservescreenLB.Visible = false;
             // 
             // Form1
             // 
@@ -388,6 +513,8 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -423,6 +550,17 @@
         private System.Windows.Forms.Button returnBooks;
         private System.Windows.Forms.Button returnCD;
         private System.Windows.Forms.Button returnTape;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ListBox reserveselectLB;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.ListBox reservescreenLB;
+        private System.Windows.Forms.Button reservetoggle;
     }
 }
 
