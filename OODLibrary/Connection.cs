@@ -25,9 +25,6 @@ namespace OODLibrary
 
         private string reservations;
         private ArrayList currentlistofid;
-      
-
-      //  MySqlConnection MyConn;
 
         public Connection()
         {

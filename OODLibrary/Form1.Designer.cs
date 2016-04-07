@@ -1,6 +1,6 @@
 ﻿namespace OODLibrary
 {
-    partial class Form1
+    partial class Library
     {
         /// <summary>
         /// Required designer variable.
@@ -59,6 +59,8 @@
             this.borrowedBooks = new System.Windows.Forms.Button();
             this.returnList = new System.Windows.Forms.ListBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.reservescreenLB = new System.Windows.Forms.ListBox();
+            this.reservetoggle = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -67,8 +69,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.reservetoggle = new System.Windows.Forms.Button();
-            this.reservescreenLB = new System.Windows.Forms.ListBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -406,6 +406,25 @@
             this.tabPage4.Text = "Reservation";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // reservescreenLB
+            // 
+            this.reservescreenLB.FormattingEnabled = true;
+            this.reservescreenLB.Location = new System.Drawing.Point(84, 144);
+            this.reservescreenLB.Name = "reservescreenLB";
+            this.reservescreenLB.Size = new System.Drawing.Size(251, 56);
+            this.reservescreenLB.TabIndex = 23;
+            this.reservescreenLB.Visible = false;
+            // 
+            // reservetoggle
+            // 
+            this.reservetoggle.Location = new System.Drawing.Point(193, 115);
+            this.reservetoggle.Name = "reservetoggle";
+            this.reservetoggle.Size = new System.Drawing.Size(142, 23);
+            this.reservetoggle.TabIndex = 22;
+            this.reservetoggle.Text = "Show reservations";
+            this.reservetoggle.UseVisualStyleBackColor = true;
+            this.reservetoggle.Click += new System.EventHandler(this.reservetoggle_Click);
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(216, 233);
@@ -479,33 +498,14 @@
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // reservetoggle
-            // 
-            this.reservetoggle.Location = new System.Drawing.Point(193, 115);
-            this.reservetoggle.Name = "reservetoggle";
-            this.reservetoggle.Size = new System.Drawing.Size(142, 23);
-            this.reservetoggle.TabIndex = 22;
-            this.reservetoggle.Text = "Show reservations";
-            this.reservetoggle.UseVisualStyleBackColor = true;
-            this.reservetoggle.Click += new System.EventHandler(this.reservetoggle_Click);
-            // 
-            // reservescreenLB
-            // 
-            this.reservescreenLB.FormattingEnabled = true;
-            this.reservescreenLB.Location = new System.Drawing.Point(84, 144);
-            this.reservescreenLB.Name = "reservescreenLB";
-            this.reservescreenLB.Size = new System.Drawing.Size(251, 56);
-            this.reservescreenLB.TabIndex = 23;
-            this.reservescreenLB.Visible = false;
-            // 
-            // Form1
+            // Library
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(453, 310);
             this.Controls.Add(this.tabControl1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "Library";
+            this.Text = "Library";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

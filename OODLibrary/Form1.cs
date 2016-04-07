@@ -11,7 +11,7 @@ using System.Collections;
 
 namespace OODLibrary
 {
-    public partial class Form1 : Form
+    public partial class Library : Form
     {
 
         private Connection connection = new Connection();
@@ -21,7 +21,7 @@ namespace OODLibrary
 
         private int switchBorrow = 0;
         
-        public Form1()
+        public Library()
         {
             InitializeComponent();
             
