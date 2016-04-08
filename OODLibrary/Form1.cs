@@ -13,12 +13,15 @@ namespace OODLibrary
 {
     public partial class Library : Form
     {
-
+        //Connections to the other classes
         private Reserves Reserves = new Reserves();
         private member member = new member();
         private Transaction Transaction = new Transaction();
         private Borrowed Borrowed = new Borrowed();
         private Returns Returns = new Returns();
+        private Payfee payfee = new Payfee();
+
+
         enum rstate {book,cd,video,notset};
         rstate reservestate;
 
@@ -36,7 +39,7 @@ namespace OODLibrary
             Reserves.Connect();
         }
 
-
+        //Displaying all the members in list box
         public void memberShow()
         {
             memberList.Items.Clear();
@@ -46,7 +49,7 @@ namespace OODLibrary
                 memberList.Items.Add(mem);
         }
 
-
+        //Deleting selected member
         private void deleteBtn_Click(object sender, EventArgs e)
         {
             if (memberList.SelectedItem == null)
@@ -59,11 +62,7 @@ namespace OODLibrary
             }
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        //Adding a memeber
         private void addBtn_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(nameTxt.Text))
@@ -82,11 +81,13 @@ namespace OODLibrary
             }
         }
 
+        //Displaying all the members on button click
         private void showBtn_Click(object sender, EventArgs e)
         {
             memberShow();
         }
 
+        //When in return to display all the books that have been borrowed and need returning
         private void borrowedBooks_Click(object sender, EventArgs e)
         {
             returnList.Items.Clear();
@@ -104,6 +105,7 @@ namespace OODLibrary
             }
         }
 
+        //When in return to display all the cds that have been borrowed and need returning
         private void borrowedCD_Click(object sender, EventArgs e)
         {
             returnList.Items.Clear();
@@ -122,6 +124,7 @@ namespace OODLibrary
             }
         }
 
+        //When in return to display all the tapes that have been borrowed and need returning
         private void borrowedTapes_Click(object sender, EventArgs e)
         {
             returnList.Items.Clear();
@@ -139,11 +142,13 @@ namespace OODLibrary
             } 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        //Display reports
+        private void reportBtn_Click(object sender, EventArgs e)
         {
             Transaction.showReport();
         }
 
+        // selected borrowed item
         public void selectItem()
         { 
             string selectedItem = borrowList.SelectedItem.ToString();
@@ -186,14 +191,11 @@ namespace OODLibrary
                     }
                 }
             }
-            else if (box == DialogResult.Cancel)
-            {
-
-            }
 
 
         }
 
+        //Displaying all books that can be borrowed
         private void bookBtn_Click(object sender, EventArgs e)
         {
             borrowList.Items.Clear();
@@ -210,6 +212,7 @@ namespace OODLibrary
 
         }
 
+        //displaying all cds that can be borrowed
         private void cdBtn_Click(object sender, EventArgs e)
         {
             borrowList.Items.Clear();
@@ -227,6 +230,7 @@ namespace OODLibrary
 
         }
 
+        //Displaying all video tapes that can be borrowed
         private void videoBtn_Click(object sender, EventArgs e)
         {
             borrowList.Items.Clear();
@@ -242,11 +246,12 @@ namespace OODLibrary
             borrowCDBtn.Hide();
         }
 
+        //Borrow books
         private void borrowBookBtn_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(cardNrBox.Text))
             {
-                MessageBox.Show("Select what you want to borrow first!");
+                MessageBox.Show("Please enter a valid card number!");
             }
             else if (!string.IsNullOrWhiteSpace(cardNrBox.Text))
             {
@@ -255,11 +260,12 @@ namespace OODLibrary
             }
         }
 
+        //Borrow Tapes
         private void borrowTapeBtn_Click_1(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(cardNrBox.Text))
             {
-                MessageBox.Show("Select what you want to borrow first!");
+                MessageBox.Show("Please enter a valid card number!");
             }
             else if (!string.IsNullOrWhiteSpace(cardNrBox.Text))
             {
@@ -268,12 +274,13 @@ namespace OODLibrary
             }
         }
 
+        //CD borrow book
         private void borrowCDBtn_Click_1(object sender, EventArgs e)
         {
             
             if (string.IsNullOrWhiteSpace(cardNrBox.Text))
             {
-                MessageBox.Show("Select what you want to borrow first!");
+                MessageBox.Show("Please enter a valid card number!");
             }
             else if (!string.IsNullOrWhiteSpace(cardNrBox.Text))
             {
@@ -282,6 +289,7 @@ namespace OODLibrary
             }
         }
 
+        //return books
         private void returnBooks_Click(object sender, EventArgs e)
         {
             string bookSelected = returnList.SelectedItem.ToString();
@@ -308,7 +316,7 @@ namespace OODLibrary
             }
             else
             {
-                DialogResult result = MessageBox.Show("You have to pay € " + calculateFee(daysPassed, type, 0) + "in fees", "Pay Fee", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                DialogResult result = MessageBox.Show("You have to pay € " + payfee.calculateFee(daysPassed, type, 0) + "in fees", "Pay Fee", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                 if (result == DialogResult.Yes)
                 {
                     MessageBox.Show("You have successfully paid and returned your book!", "Details",MessageBoxButtons.OK, MessageBoxIcon.Information );
@@ -322,6 +330,7 @@ namespace OODLibrary
             }
         }
         
+        //returns CD
         private void returnCD_Click(object sender, EventArgs e)
         {
             string cdSelected = returnList.SelectedItem.ToString();
@@ -344,7 +353,7 @@ namespace OODLibrary
                 age /= 365;
             }
 
-                DialogResult result = MessageBox.Show("You have to pay € " + calculateFee(daysPassed, type, age) + " in fees", "Pay Fee", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                DialogResult result = MessageBox.Show("You have to pay € " + payfee.calculateFee(daysPassed, type, age) + " in fees", "Pay Fee", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                 if (result == DialogResult.Yes)
                 {
                     MessageBox.Show("You have successfully paid and returned your CD!", "Details", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -357,6 +366,7 @@ namespace OODLibrary
                 }
         }
 
+        //returns tape
         private void returnTape_Click(object sender, EventArgs e)
         {
             string tapeSelected = returnList.SelectedItem.ToString();
@@ -367,7 +377,7 @@ namespace OODLibrary
             DateTime startDate = Convert.ToDateTime(splitstring[4]);
             int daysPassed = Convert.ToInt32((DateTime.Now - Convert.ToDateTime(startDate)).TotalDays);
 
-            DialogResult result = MessageBox.Show("You have to pay € " + calculateFee(daysPassed, type, 0) + " in fees", "Pay Fee", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            DialogResult result = MessageBox.Show("You have to pay € " + payfee.calculateFee(daysPassed, type, 0) + " in fees", "Pay Fee", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
             if (result == DialogResult.Yes)
             {
                 MessageBox.Show("You have successfully paid and returned your videotape!", "Details", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -380,135 +390,7 @@ namespace OODLibrary
             }
         }
 
-        /// <summary>
-        /// Method used for calculation of the fee that a user has to pay
-        /// </summary>
-        /// <param name="totalDays"></param>
-        /// <param name="type"></param>
-        /// <param name="age"></param>
-        /// <returns> Double with the amount of money that you have to pay</returns>
-        public double calculateFee(int totalDays, String type, int age)
-        {
-            if (type.Equals("Novel"))
-            {
-                if (totalDays > 21)
-                {
-                    return ((totalDays - 21) * 0.25);
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-            else if (type.Equals("Study Book"))
-            {
-                if (totalDays > 30)
-                {
-                    if (((totalDays - 30) % 7) > 0)
-                    {
-                        return (((totalDays - 30) / 7) + 1);
-                    }
-                    else
-                    {
-                        return ((totalDays - 30) / 7);
-                    }
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-            else if (type.Equals("Classical"))
-            {
-                double totalCost = 0;
 
-                if (totalDays > 10)
-                {
-                    if (((totalDays - 10) % 7) > 0)
-                    {
-                        totalCost = ((((totalDays - 10) / 7) + 1) * 1.50) + 2;
-                    }
-                    else
-                    {
-                        totalCost = (((totalDays - 10) / 7) * 1.50) + 2;
-                    }
-                }
-                else
-                {
-                    totalCost = 2;
-                }
-
-                if (age > 1 && age < 5)
-                {
-                    return (totalCost * 0.90);
-                }
-                else if (age > 5)
-                {
-                    return (totalCost * 0.50);
-                }
-                else
-                {
-                    return totalCost;
-                }
-            }
-            else if (type.Equals("Popular"))
-            {
-                double totalCost = 0;
-
-                if (totalDays > 10)
-                {
-                    if (((totalDays - 10) % 7) > 0)
-                    {
-                        totalCost = ((((totalDays - 10) / 7) + 1) * 2) + 1;
-                    }
-                    else
-                    {
-                        totalCost = (((totalDays - 10) / 7) * 2) + 1;
-                    }
-                }
-                else
-                {
-                    totalCost = 1;
-                }
-
-                if (age > 1 && age < 5)
-                {
-                    return (totalCost * 0.90);
-                }
-                else if (age > 5)
-                {
-                    return (totalCost * 0.50);
-                }
-                else
-                {
-                    return totalCost;
-                }
-            }
-            else if (type.Equals("A"))
-            {
-                return (totalDays * 2);
-            }
-            else if (type.Equals("B"))
-            {
-                if (totalDays > 3)
-                {
-                    return ((totalDays - 3) + 2);
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-            else
-            {
-                return -1;
-            }
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void reservetoggle_Click(object sender, EventArgs e)
         {
@@ -549,7 +431,7 @@ namespace OODLibrary
             }
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void ReserveBookbtn_Click(object sender, EventArgs e)
         {
             reserveselectLB.Items.Clear();
             this.reservescreenLB.Hide();
@@ -563,7 +445,7 @@ namespace OODLibrary
 
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void ReserveCDbtn_Click(object sender, EventArgs e)
         {
 
             reserveselectLB.Items.Clear();
@@ -576,7 +458,7 @@ namespace OODLibrary
             reservestate = rstate.cd;
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void ReserveTapebtn_Click(object sender, EventArgs e)
         {
             reserveselectLB.Items.Clear();
             this.reservescreenLB.Hide();
@@ -589,7 +471,7 @@ namespace OODLibrary
             reservestate = rstate.video;
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void Reserve_Click_1(object sender, EventArgs e)
         {
             int x;
             if (int.TryParse(this.textBox1.Text, out x))

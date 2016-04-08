@@ -27,7 +27,27 @@ namespace OODLibrary
             MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
             MySqlDataReader MyReader;
             MyConn.Open();
-            MyReader = MyCommand.ExecuteReader();
+            //MyReader = MyCommand.ExecuteReader();
+
+
+            //check if the members exist
+            string query2 = "SELECT * FROM userdata WHERE userdata.IDMember =" + IDMember + "";
+            MySqlCommand MyCommand2 = new MySqlCommand(query2, MyConn);
+            MySqlDataReader MyReader2;
+            query2 = null;
+            MyReader2 = MyCommand2.ExecuteReader();
+
+            if (MyReader2.HasRows)
+            {
+                MyReader2.Close();
+                MyReader = MyCommand.ExecuteReader();
+            }
+            else
+            {
+                MessageBox.Show("This Card ID doesn't exist \n Please enter a valid card ID.");
+                
+            }
+
         }
 
         //changing the availability of the book to no in the book table
