@@ -40,7 +40,7 @@ namespace OODLibrary
         public void setCDBorrowedNotAvailable(String cdId)
         {
             MyConn = new MySqlConnection(connection);
-            string query1 = "UPDATE cd SET Availability = 'No' WHERE IDBook = " + "'" + cdId + "'";
+            string query1 = "UPDATE cd SET Availability = 'No' WHERE IDCD = " + "'" + cdId + "'";
             MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
             MySqlDataReader MyReader;
             MyConn.Open();
@@ -50,7 +50,7 @@ namespace OODLibrary
         public void setTapeBorrowedNotAvailable(String tapeId)
         {
             MyConn = new MySqlConnection(connection);
-            string query1 = "UPDATE videotape SET Availability = 'No' WHERE IDBook = " + "'" + tapeId + "'";
+            string query1 = "UPDATE videotape SET Availability = 'No' WHERE IDTape = " + "'" + tapeId + "'";
             MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
             MySqlDataReader MyReader;
             MyConn.Open();

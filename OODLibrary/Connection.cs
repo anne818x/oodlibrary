@@ -46,7 +46,7 @@ namespace OODLibrary
         {
             currentlistofid.Clear();
             MyConn = new MySqlConnection(connection);
-            string query1 = "SELECT IDBook, BookName FROM books";
+            string query1 = "SELECT IDBook, BookName FROM books WHERE Availability = 'Yes'";
             MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
             MySqlDataReader MyReader;
             MyConn.Open();
@@ -64,7 +64,7 @@ namespace OODLibrary
         {
             currentlistofid.Clear();
             MyConn = new MySqlConnection(connection);
-            string query1 = "SELECT IDCD, CDName FROM cd";
+            string query1 = "SELECT IDCD, CDName FROM cd WHERE Availability = 'Yes'";
             MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
             MySqlDataReader MyReader;
             MyConn.Open();
@@ -82,7 +82,7 @@ namespace OODLibrary
         {
             currentlistofid.Clear();
             MySqlConnection MyConn = new MySqlConnection(connection);
-            string query1 = "SELECT IDTape, TapeName FROM videotape";
+        string query1 = "SELECT IDTape, TapeName FROM videotape WHERE Availability = 'Yes'";
             MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
             MySqlDataReader MyReader;
             MyConn.Open();
@@ -99,6 +99,51 @@ namespace OODLibrary
 
         
 
+<<<<<<< HEAD
+=======
+        public void returnCD(int cdId)
+        {
+            MyConn = new MySqlConnection(connection);
+            string query1 = "DELETE FROM borrow WHERE IDCD =" + "'" + cdId + "'";
+            MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
+            MySqlDataReader MyReader;
+            MyConn.Open();
+            MyReader = MyCommand.ExecuteReader();
+        }
+
+        public void setCDAvailable(int cdId)
+            {
+                MyConn = new MySqlConnection(connection);
+                string query1 = "UPDATE cd SET Availability = 'Yes' WHERE IDCD = " + "'" + cdId + "'";
+                MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
+                MySqlDataReader MyReader;
+                MyConn.Open();
+                MyReader = MyCommand.ExecuteReader();
+            }
+
+        public void returnTape(int tapeId)
+        {
+            MyConn = new MySqlConnection(connection);
+            string query1 = "DELETE FROM borrow WHERE IDTape =" + "'" + tapeId + "'";
+            MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
+            MySqlDataReader MyReader;
+            MyConn.Open();
+            MyReader = MyCommand.ExecuteReader();
+        }
+
+        public void setTapeAvailable(int tapeId)
+        {
+            MyConn = new MySqlConnection(connection);
+            string query1 = "UPDATE videotape SET Availability = 'Yes' WHERE IDTape = " + "'" + tapeId + "'";
+            MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
+            MySqlDataReader MyReader;
+            MyConn.Open();
+            MyReader = MyCommand.ExecuteReader();
+        }
+
+
+
+>>>>>>> 7f8912b7887de7d0f0f0f2be3c0c9737604cc13d
         public ArrayList giveCurrentSelectionids()
         {
             return this.currentlistofid;
