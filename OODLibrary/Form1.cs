@@ -18,6 +18,7 @@ namespace OODLibrary
         private member member = new member();
         private Transaction Transaction = new Transaction();
         private Borrowed Borrowed = new Borrowed();
+        private Returns Returns = new Returns();
         enum rstate {book,cd,video,notset};
         rstate reservestate;
 
@@ -73,7 +74,7 @@ namespace OODLibrary
         private void borrowedBooks_Click(object sender, EventArgs e)
         {
             returnList.Items.Clear();
-            String booksString = connection.showBorrowedBooks();
+            String booksString = Returns.showBorrowedBooks();
             if (String.IsNullOrEmpty(booksString))
             {
                 MessageBox.Show("No Books Borrowed!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -90,8 +91,8 @@ namespace OODLibrary
         private void borrowedCD_Click(object sender, EventArgs e)
         {
             returnList.Items.Clear();
-            String cdsString = connection.showBorrowedCDs();
-            cdsString = connection.showBorrowedCDs();
+            String cdsString = Returns.showBorrowedCDs();
+            cdsString = Returns.showBorrowedCDs();
             if (String.IsNullOrEmpty(cdsString))
             {
                 MessageBox.Show("No CDs Borrowed!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -108,7 +109,7 @@ namespace OODLibrary
         private void borrowedTapes_Click(object sender, EventArgs e)
         {
             returnList.Items.Clear();
-            String tapesString = connection.showBorrowedTapes();
+            String tapesString = Returns.showBorrowedTapes();
             if (String.IsNullOrEmpty(tapesString))
             {
                 MessageBox.Show("No Videotapes Borrowed!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -257,15 +258,15 @@ namespace OODLibrary
             {
                 MessageBox.Show("You are returning this book on time", "Details", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
-                connection.returnBook(bookId);
-                connection.setBookAvailable(bookId);
+                Returns.returnBook(bookId);
+                Returns.setBookAvailable(bookId);
             }
             else if (type == "Study Book" && daysPassed <= 30)
             {
                 MessageBox.Show("You are returning this book on time", "Details", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
-                connection.returnBook(bookId);
-                connection.setBookAvailable(bookId);
+                Returns.returnBook(bookId);
+                Returns.setBookAvailable(bookId);
             }
             else
             {
@@ -273,8 +274,8 @@ namespace OODLibrary
                 if (result == DialogResult.Yes)
                 {
                     MessageBox.Show("You have successfully paid and returned your book!", "Details",MessageBoxButtons.OK, MessageBoxIcon.Information );
-                    connection.returnBook(bookId);
-                    connection.setBookAvailable(bookId);
+                    Returns.returnBook(bookId);
+                    Returns.setBookAvailable(bookId);
                 }
                 else
                 {
@@ -309,8 +310,8 @@ namespace OODLibrary
                 if (result == DialogResult.Yes)
                 {
                     MessageBox.Show("You have successfully paid and returned your CD!", "Details", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    connection.returnCD(cdId);
-                    connection.setCDAvailable(cdId);
+                    Returns.returnCD(cdId);
+                    Returns.setCDAvailable(cdId);
                 }
                 else
                 {
@@ -332,8 +333,8 @@ namespace OODLibrary
             if (result == DialogResult.Yes)
             {
                 MessageBox.Show("You have successfully paid and returned your videotape!", "Details", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                connection.returnTape(tapeId);
-                connection.setTapeAvailable(tapeId);
+                Returns.returnTape(tapeId);
+                Returns.setTapeAvailable(tapeId);
             }
             else
             {

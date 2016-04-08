@@ -1,0 +1,10 @@
+C:\Users\Annemarieke\Documents\GitHub\oodlibrary\OODLibrary\bin\Debug\OODLibrary.exe.config
+C:\Users\Annemarieke\Documents\GitHub\oodlibrary\OODLibrary\bin\Debug\OODLibrary.exe
+C:\Users\Annemarieke\Documents\GitHub\oodlibrary\OODLibrary\bin\Debug\OODLibrary.pdb
+C:\Users\Annemarieke\Documents\GitHub\oodlibrary\OODLibrary\bin\Debug\MySql.Data.dll
+C:\Users\Annemarieke\Documents\GitHub\oodlibrary\OODLibrary\obj\Debug\OODLibrary.csprojResolveAssemblyReference.cache
+C:\Users\Annemarieke\Documents\GitHub\oodlibrary\OODLibrary\obj\Debug\OODLibrary.Library.resources
+C:\Users\Annemarieke\Documents\GitHub\oodlibrary\OODLibrary\obj\Debug\OODLibrary.Properties.Resources.resources
+C:\Users\Annemarieke\Documents\GitHub\oodlibrary\OODLibrary\obj\Debug\OODLibrary.csproj.GenerateResource.Cache
+C:\Users\Annemarieke\Documents\GitHub\oodlibrary\OODLibrary\obj\Debug\OODLibrary.exe
+C:\Users\Annemarieke\Documents\GitHub\oodlibrary\OODLibrary\obj\Debug\OODLibrary.pdb
