@@ -99,8 +99,7 @@ namespace OODLibrary
 
         
 
-<<<<<<< HEAD
-=======
+
         public void returnCD(int cdId)
         {
             MyConn = new MySqlConnection(connection);
@@ -143,7 +142,7 @@ namespace OODLibrary
 
 
 
->>>>>>> 7f8912b7887de7d0f0f0f2be3c0c9737604cc13d
+
         public ArrayList giveCurrentSelectionids()
         {
             return this.currentlistofid;
