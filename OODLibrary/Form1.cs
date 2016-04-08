@@ -293,7 +293,7 @@ namespace OODLibrary
         private void returnBooks_Click(object sender, EventArgs e)
         {
             string bookSelected = returnList.SelectedItem.ToString();
-            string[] splitstring = bookSelected.Split(' ');
+            string[] splitstring = bookSelected.Split('-');
             int bookId = Int32.Parse(splitstring[0]);
             string name = splitstring[1];
             string type = splitstring[2];
@@ -316,7 +316,7 @@ namespace OODLibrary
             }
             else
             {
-                DialogResult result = MessageBox.Show("You have to pay € " + payfee.calculateFee(daysPassed, type, 0) + "in fees", "Pay Fee", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                DialogResult result = MessageBox.Show("You have to pay € " + payfee.calculateFee(daysPassed, type, 0) + " in fees", "Pay Fee", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                 if (result == DialogResult.Yes)
                 {
                     MessageBox.Show("You have successfully paid and returned your book!", "Details",MessageBoxButtons.OK, MessageBoxIcon.Information );
@@ -370,11 +370,11 @@ namespace OODLibrary
         private void returnTape_Click(object sender, EventArgs e)
         {
             string tapeSelected = returnList.SelectedItem.ToString();
-            string[] splitstring = tapeSelected.Split(' ');
+            string[] splitstring = tapeSelected.Split('-');
             int tapeId = Int32.Parse(splitstring[0]);
             string name = splitstring[1];
             string type = splitstring[2];
-            DateTime startDate = Convert.ToDateTime(splitstring[4]);
+            DateTime startDate = Convert.ToDateTime(splitstring[3]);
             int daysPassed = Convert.ToInt32((DateTime.Now - Convert.ToDateTime(startDate)).TotalDays);
 
             DialogResult result = MessageBox.Show("You have to pay € " + payfee.calculateFee(daysPassed, type, 0) + " in fees", "Pay Fee", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);

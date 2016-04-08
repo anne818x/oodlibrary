@@ -91,7 +91,7 @@ namespace OODLibrary
             borrowedBooks = null;
             while (MyReader.Read())
             {
-                borrowedBooks += (MyReader["IDBook"].ToString() + "  " + MyReader["BookName"].ToString() + "  " + MyReader["Type"].ToString() + "  " + MyReader["StartDate"].ToString() + "/");
+                borrowedBooks += (MyReader["IDBook"].ToString() + "-" + MyReader["BookName"].ToString() + "-" + MyReader["Type"].ToString() + "-" + MyReader["StartDate"].ToString() + "/");
             }
             return borrowedBooks;
         }
@@ -107,7 +107,7 @@ namespace OODLibrary
             borrowedCDs = null;
             while (MyReader.Read())
             {
-                borrowedCDs += (MyReader["IDCD"].ToString() + " - " + MyReader["CDName"].ToString() + " -" + MyReader["Type"].ToString() + "- " + MyReader["ReleaseDate"].ToString() + " - " + MyReader["StartDate"].ToString() + "/");
+                borrowedCDs += (MyReader["IDCD"].ToString() + "-" + MyReader["CDName"].ToString() + "-" + MyReader["Type"].ToString() + "-" + MyReader["ReleaseDate"].ToString() + "-" + MyReader["StartDate"].ToString() + "/");
             }
             return borrowedCDs;
         }
@@ -123,7 +123,7 @@ namespace OODLibrary
             borrowedTapes = "";
             while (MyReader.Read())
             {
-                borrowedTapes += (MyReader["IDTape"].ToString() + " " + MyReader["TapeName"].ToString() + " " + MyReader["Type"].ToString() + " " + MyReader["StartDate"].ToString() + "/");
+                borrowedTapes += (MyReader["IDTape"].ToString() + "-" + MyReader["TapeName"].ToString() + "-" + MyReader["Type"].ToString() + "-" + MyReader["StartDate"].ToString() + "/");
             }
             return borrowedTapes;
         }
