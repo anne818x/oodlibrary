@@ -14,7 +14,7 @@ namespace OODLibrary
     public partial class Library : Form
     {
 
-        private Connection connection = new Connection();
+        private Reserves Reserves = new Reserves();
         private member member = new member();
         private Transaction Transaction = new Transaction();
         private Borrowed Borrowed = new Borrowed();
@@ -33,7 +33,7 @@ namespace OODLibrary
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            connection.Connect();
+            Reserves.Connect();
         }
 
 
@@ -197,7 +197,7 @@ namespace OODLibrary
         private void bookBtn_Click(object sender, EventArgs e)
         {
             borrowList.Items.Clear();
-            String booksString = connection.getAllBooks();
+            String booksString = Borrowed.getAllBooks();
 
             foreach (String book in booksString.Split('-'))
             {
@@ -213,7 +213,7 @@ namespace OODLibrary
         private void cdBtn_Click(object sender, EventArgs e)
         {
             borrowList.Items.Clear();
-            String cdString = connection.getAllCDs();
+            String cdString = Borrowed.getAllCDs();
 
             foreach (String cd in cdString.Split('-'))
             {
@@ -230,7 +230,7 @@ namespace OODLibrary
         private void videoBtn_Click(object sender, EventArgs e)
         {
             borrowList.Items.Clear();
-            String tapeString = connection.getAllVidTapes();
+            String tapeString = Borrowed.getAllVidTapes();
 
             foreach (String tape in tapeString.Split('-'))
             {
@@ -522,7 +522,7 @@ namespace OODLibrary
                 {
 
                     reservescreenLB.Items.Clear();
-                    foreach (String item in connection.getReservations(reserveselectLB.SelectedIndex,reservestate.ToString()).Split('?'))
+                    foreach (String item in Reserves.getReservations(reserveselectLB.SelectedIndex,reservestate.ToString()).Split('?'))
                     {
                         reservescreenLB.Items.Add(item);
                     }
@@ -553,7 +553,7 @@ namespace OODLibrary
         {
             reserveselectLB.Items.Clear();
             this.reservescreenLB.Hide();
-            String booksString = connection.getAllBooks();
+            String booksString = Reserves.getReservedBooks();
 
             foreach (String book in booksString.Split('-'))
             {
@@ -568,7 +568,7 @@ namespace OODLibrary
 
             reserveselectLB.Items.Clear();
             this.reservescreenLB.Hide();
-            String cdString = connection.getAllCDs();
+            String cdString = Reserves.getReservedCDs();
             foreach (String cd in cdString.Split('-'))
             {
                 reserveselectLB.Items.Add(cd);
@@ -580,7 +580,7 @@ namespace OODLibrary
         {
             reserveselectLB.Items.Clear();
             this.reservescreenLB.Hide();
-            String tapeString = connection.getAllVidTapes();
+            String tapeString = Reserves.getReservedVidTapes();
 
             foreach (String tape in tapeString.Split('-'))
             {
@@ -596,7 +596,7 @@ namespace OODLibrary
             {
                 if (this.reserveselectLB.SelectedItem != null)
                 {
-                    this.connection.placeReservation(this.reserveselectLB.SelectedIndex, x, this.reservestate.ToString());
+                    this.Reserves.placeReservation(this.reserveselectLB.SelectedIndex, x, this.reservestate.ToString());
                     MessageBox.Show("Reservation ADDED");
                 }
                 else

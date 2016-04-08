@@ -13,7 +13,11 @@ namespace OODLibrary
         private string connection = "datasource=localhost;database=oodlibrary;port=;username=root;password=";
 
         MySqlConnection MyConn;
-        
+        private string books;
+        private string cds;
+        private string vidtapes;
+
+
         //Adding a item to the borrowed table 
         public void addBorrow(string IDMember, string IDBook, string IDCD, string IDTape)
         {
@@ -55,6 +59,83 @@ namespace OODLibrary
             MySqlDataReader MyReader;
             MyConn.Open();
             MyReader = MyCommand.ExecuteReader();
+        }
+
+        public String getAllBooks()
+        {
+            MyConn = new MySqlConnection(connection);
+            string query1 = "SELECT IDBook, BookName FROM books WHERE Availability = 'Yes'";
+            MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
+            MySqlDataReader MyReader;
+            MyConn.Open();
+            MyReader = MyCommand.ExecuteReader();
+            books = null;
+
+            if (MyReader.HasRows)
+            {
+                while (MyReader.Read())
+                {
+                    books += (MyReader["IDBook"].ToString() + " " + MyReader["BookName"].ToString() + "-");
+                }
+                
+            }
+            else
+            {
+                MessageBox.Show("No books are available at the moment.  \n You can reserve.");
+                books = "No books are available.";
+            }
+            return books;
+        }
+
+        public String getAllCDs()
+        {
+            MyConn = new MySqlConnection(connection);
+            string query1 = "SELECT IDCD, CDName FROM cd WHERE Availability = 'Yes'";
+            MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
+            MySqlDataReader MyReader;
+            MyConn.Open();
+            MyReader = MyCommand.ExecuteReader();
+            cds = null;
+            if (MyReader.HasRows)
+            {
+                while (MyReader.Read())
+                {
+                    cds += (MyReader["IDCD"].ToString() + " " + MyReader["CDName"].ToString() + "-");
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("No cds are available at the moment.  \n You can reserve.");
+                cds = "No cds are available.";
+            }
+            return cds;
+        }
+
+        public String getAllVidTapes()
+        {
+            MySqlConnection MyConn = new MySqlConnection(connection);
+            string query1 = "SELECT IDTape, TapeName FROM videotape WHERE Availability = 'Yes'";
+            MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
+            MySqlDataReader MyReader;
+            MyConn.Open();
+            MyReader = MyCommand.ExecuteReader();
+
+            vidtapes = null;
+            if (MyReader.HasRows)
+            {
+                while (MyReader.Read())
+                {
+                    vidtapes += (MyReader["IDTape"].ToString() + " " + MyReader["TapeName"].ToString() + "-");
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("No video tapes are available at the moment.  \n You can reserve.");
+                vidtapes = "No tapes are available.";
+            }
+            return vidtapes;
         }
     }
 }

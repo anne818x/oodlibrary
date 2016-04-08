@@ -52,7 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Borrowed.cs" />
-    <Compile Include="Connection.cs" />
+    <Compile Include="Reserves.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

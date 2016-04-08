@@ -9,9 +9,8 @@ using System.Collections;
 
 namespace OODLibrary
 {
-    class Connection
+    class Reserves
     {
-
         private string books;
         private string cds;
         private string vidtapes;
@@ -24,7 +23,7 @@ namespace OODLibrary
         private string reservations;
         private ArrayList currentlistofid;
 
-        public Connection()
+        public Reserves()
         {
             currentlistofid = new ArrayList();
         }
@@ -42,105 +41,96 @@ namespace OODLibrary
             }
         }
 
-        public String getAllBooks()
+        public String getReservedBooks()
         {
             currentlistofid.Clear();
             MyConn = new MySqlConnection(connection);
-            string query1 = "SELECT IDBook, BookName FROM books WHERE Availability = 'Yes'";
+            string query1 = "SELECT IDBook, BookName FROM books WHERE Availability = 'No'";
             MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
             MySqlDataReader MyReader;
             MyConn.Open();
             MyReader = MyCommand.ExecuteReader();
             books = null;
-            while (MyReader.Read())
+            if (MyReader.HasRows)
             {
-                currentlistofid.Add(MyReader["IDBook"].ToString());
-                books += (MyReader["IDBook"].ToString() + " " + MyReader["BookName"].ToString() + "-");
+                while (MyReader.Read())
+                {
+                    currentlistofid.Add(MyReader["IDBook"].ToString());
+                    books += (MyReader["IDBook"].ToString() + " " + MyReader["BookName"].ToString() + "-");
+                }
             }
+
+
+            else
+            {
+                MessageBox.Show("No books are borrowed at the moment.");
+                books = "No books are borrowed at the moment.";
+            }
+
             return books;
         }
 
-        public String getAllCDs()
+        public String getReservedCDs()
         {
             currentlistofid.Clear();
             MyConn = new MySqlConnection(connection);
-            string query1 = "SELECT IDCD, CDName FROM cd WHERE Availability = 'Yes'";
+            string query1 = "SELECT IDCD, CDName FROM cd WHERE Availability = 'No'";
             MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
             MySqlDataReader MyReader;
             MyConn.Open();
             MyReader = MyCommand.ExecuteReader();
             cds = null;
-            while (MyReader.Read())
+
+            if (MyReader.HasRows)
             {
-                currentlistofid.Add(MyReader["IDCD"].ToString());
-                cds += (MyReader["IDCD"].ToString() + " " + MyReader["CDName"].ToString() + "-");
+                while (MyReader.Read())
+                {
+                    currentlistofid.Add(MyReader["IDCD"].ToString());
+                    cds += (MyReader["IDCD"].ToString() + " " + MyReader["CDName"].ToString() + "-");
+                }
             }
+            
+
+            else
+            {
+                MessageBox.Show("No cds are borrowed at the moment.");
+                cds = "No cds are borrowed at the moment.";
+            }
+
             return cds;
         }
 
-        public String getAllVidTapes()
+        public String getReservedVidTapes()
         {
             currentlistofid.Clear();
             MySqlConnection MyConn = new MySqlConnection(connection);
-        string query1 = "SELECT IDTape, TapeName FROM videotape WHERE Availability = 'Yes'";
+            string query1 = "SELECT IDTape, TapeName FROM videotape WHERE Availability = 'No'";
             MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
             MySqlDataReader MyReader;
             MyConn.Open();
             MyReader = MyCommand.ExecuteReader();
 
             vidtapes = null;
-            while (MyReader.Read())
+
+            if (MyReader.HasRows)
             {
-                currentlistofid.Add(MyReader["IDTape"].ToString());
-                vidtapes += (MyReader["IDTape"].ToString() + " " + MyReader["TapeName"].ToString() + "-");
+                while (MyReader.Read())
+                {
+                    currentlistofid.Add(MyReader["IDTape"].ToString());
+                    vidtapes += (MyReader["IDTape"].ToString() + " " + MyReader["TapeName"].ToString() + "-");
+                }
+            }
+
+            else
+            {
+                MessageBox.Show("No video tapes are borrowed at the moment..");
+                vidtapes = "No video tapes are borrowed at the moment.";
             }
             return vidtapes;
+
         }
 
         
-
-
-        public void returnCD(int cdId)
-        {
-            MyConn = new MySqlConnection(connection);
-            string query1 = "DELETE FROM borrow WHERE IDCD =" + "'" + cdId + "'";
-            MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
-            MySqlDataReader MyReader;
-            MyConn.Open();
-            MyReader = MyCommand.ExecuteReader();
-        }
-
-        public void setCDAvailable(int cdId)
-            {
-                MyConn = new MySqlConnection(connection);
-                string query1 = "UPDATE cd SET Availability = 'Yes' WHERE IDCD = " + "'" + cdId + "'";
-                MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
-                MySqlDataReader MyReader;
-                MyConn.Open();
-                MyReader = MyCommand.ExecuteReader();
-            }
-
-        public void returnTape(int tapeId)
-        {
-            MyConn = new MySqlConnection(connection);
-            string query1 = "DELETE FROM borrow WHERE IDTape =" + "'" + tapeId + "'";
-            MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
-            MySqlDataReader MyReader;
-            MyConn.Open();
-            MyReader = MyCommand.ExecuteReader();
-        }
-
-        public void setTapeAvailable(int tapeId)
-        {
-            MyConn = new MySqlConnection(connection);
-            string query1 = "UPDATE videotape SET Availability = 'Yes' WHERE IDTape = " + "'" + tapeId + "'";
-            MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
-            MySqlDataReader MyReader;
-            MyConn.Open();
-            MyReader = MyCommand.ExecuteReader();
-        }
-
-
 
 
         public ArrayList giveCurrentSelectionids()
