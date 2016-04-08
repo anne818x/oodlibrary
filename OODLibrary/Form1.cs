@@ -48,9 +48,14 @@ namespace OODLibrary
 
         private void deleteBtn_Click(object sender, EventArgs e)
         {
-            
-            member.deleteMember(memberList.SelectedItem.ToString());
-            memberShow();
+            if (memberList.SelectedItem == null)
+            {
+                MessageBox.Show("Please select show list to select a member you want to delete.");
+            }
+            else {
+                member.deleteMember(memberList.SelectedItem.ToString());
+                memberShow();
+            }
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -60,9 +65,20 @@ namespace OODLibrary
 
         private void addBtn_Click(object sender, EventArgs e)
         {
-            
-            member.addMember(nameTxt.Text, ageTxt.Text);
-            
+            if (string.IsNullOrWhiteSpace(nameTxt.Text))
+            {
+                MessageBox.Show("Please fill in your name");
+            }
+            else if(string.IsNullOrWhiteSpace(ageTxt.Text))
+            {
+                MessageBox.Show("Please fill in your age");
+            }
+            else
+            {
+                member.addMember(nameTxt.Text, ageTxt.Text);
+                nameTxt.Clear();
+                ageTxt.Clear();
+            }
         }
 
         private void showBtn_Click(object sender, EventArgs e)
@@ -227,20 +243,42 @@ namespace OODLibrary
 
         private void borrowBookBtn_Click(object sender, EventArgs e)
         {
-            switchBorrow = 0;
-            selectItem();
+            if (string.IsNullOrWhiteSpace(cardNrBox.Text))
+            {
+                MessageBox.Show("Select what you want to borrow first!");
+            }
+            else if (!string.IsNullOrWhiteSpace(cardNrBox.Text))
+            {
+                switchBorrow = 0;
+                selectItem();
+            }
         }
 
         private void borrowTapeBtn_Click_1(object sender, EventArgs e)
         {
-            switchBorrow = 2;
-            selectItem();
+            if (string.IsNullOrWhiteSpace(cardNrBox.Text))
+            {
+                MessageBox.Show("Select what you want to borrow first!");
+            }
+            else if (!string.IsNullOrWhiteSpace(cardNrBox.Text))
+            {
+                switchBorrow = 2;
+                selectItem();
+            }
         }
 
         private void borrowCDBtn_Click_1(object sender, EventArgs e)
         {
-            switchBorrow = 1;
-            selectItem();
+            
+            if (string.IsNullOrWhiteSpace(cardNrBox.Text))
+            {
+                MessageBox.Show("Select what you want to borrow first!");
+            }
+            else if (!string.IsNullOrWhiteSpace(cardNrBox.Text))
+            {
+                switchBorrow = 1;
+                selectItem();
+            }
         }
 
         private void returnBooks_Click(object sender, EventArgs e)

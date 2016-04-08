@@ -48,7 +48,7 @@ namespace OODLibrary
         {
             currentlistofid.Clear();
             MyConn = new MySqlConnection(connection);
-            string query1 = "SELECT IDBook, BookName FROM books";
+            string query1 = "SELECT IDBook, BookName FROM books WHERE Availability = 'Yes'";
             MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
             MySqlDataReader MyReader;
             MyConn.Open();
@@ -66,7 +66,7 @@ namespace OODLibrary
         {
             currentlistofid.Clear();
             MyConn = new MySqlConnection(connection);
-            string query1 = "SELECT IDCD, CDName FROM cd";
+            string query1 = "SELECT IDCD, CDName FROM cd WHERE Availability = 'Yes'";
             MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
             MySqlDataReader MyReader;
             MyConn.Open();
@@ -84,7 +84,7 @@ namespace OODLibrary
         {
             currentlistofid.Clear();
             MySqlConnection MyConn = new MySqlConnection(connection);
-            string query1 = "SELECT IDTape, TapeName FROM videotape";
+        string query1 = "SELECT IDTape, TapeName FROM videotape WHERE Availability = 'Yes'";
             MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
             MySqlDataReader MyReader;
             MyConn.Open();
@@ -209,35 +209,8 @@ namespace OODLibrary
             MyReader = MyCommand.ExecuteReader();
         }
 
-        public void setBookBorrowedNotAvailable(String bookId)
-        {
-            MyConn = new MySqlConnection(connection);
-            string query1 = "UPDATE books SET Availability = 'No' WHERE IDBook = " + "'" + bookId + "'";
-            MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
-            MySqlDataReader MyReader;
-            MyConn.Open();
-            MyReader = MyCommand.ExecuteReader();
-        }
 
-        public void setCDBorrowedNotAvailable(String cdId)
-        {
-            MyConn = new MySqlConnection(connection);
-            string query1 = "UPDATE cd SET Availability = 'No' WHERE IDBook = " + "'" + cdId + "'";
-            MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
-            MySqlDataReader MyReader;
-            MyConn.Open();
-            MyReader = MyCommand.ExecuteReader();
-        }
 
-        public void setTapeBorrowedNotAvailable(String tapeId)
-        {
-            MyConn = new MySqlConnection(connection);
-            string query1 = "UPDATE videotape SET Availability = 'No' WHERE IDBook = " + "'" + tapeId + "'";
-            MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
-            MySqlDataReader MyReader;
-            MyConn.Open();
-            MyReader = MyCommand.ExecuteReader();
-        }
         public ArrayList giveCurrentSelectionids()
         {
             return this.currentlistofid;
