@@ -285,7 +285,7 @@ namespace OODLibrary
         private void returnBooks_Click(object sender, EventArgs e)
         {
             string bookSelected = returnList.SelectedItem.ToString();
-            string[] splitstring = bookSelected.Split('-');
+            string[] splitstring = bookSelected.Split(' ');
             int bookId = Int32.Parse(splitstring[0]);
             string name = splitstring[1];
             string type = splitstring[2];
@@ -360,7 +360,7 @@ namespace OODLibrary
         private void returnTape_Click(object sender, EventArgs e)
         {
             string tapeSelected = returnList.SelectedItem.ToString();
-            string[] splitstring = tapeSelected.Split('-');
+            string[] splitstring = tapeSelected.Split(' ');
             int tapeId = Int32.Parse(splitstring[0]);
             string name = splitstring[1];
             string type = splitstring[2];
