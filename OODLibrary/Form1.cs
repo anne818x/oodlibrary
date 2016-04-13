@@ -197,6 +197,14 @@ namespace OODLibrary
             else if (!string.IsNullOrWhiteSpace(cardNrBox.Text))
             {
                 selectItem();
+                borrowList.Items.Clear();
+                String itemsString = Borrowed.getAllItems();
+
+                foreach (String item in itemsString.Split('-'))
+                {
+                    borrowList.Items.Add(item);
+                }
+
             }
         }
 
