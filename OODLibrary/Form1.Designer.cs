@@ -30,12 +30,11 @@
         {
             this.deleteBtn = new System.Windows.Forms.Button();
             this.bookBtn = new System.Windows.Forms.Button();
-            this.videoBtn = new System.Windows.Forms.Button();
-            this.cdBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.reportBtn = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
             this.showBtn = new System.Windows.Forms.Button();
             this.addBtn = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -43,11 +42,9 @@
             this.nameTxt = new System.Windows.Forms.TextBox();
             this.memberList = new System.Windows.Forms.ListBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.borrowTapeBtn = new System.Windows.Forms.Button();
-            this.borrowCDBtn = new System.Windows.Forms.Button();
+            this.borrowItemBtn = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.cardNrBox = new System.Windows.Forms.TextBox();
-            this.borrowBookBtn = new System.Windows.Forms.Button();
             this.borrowList = new System.Windows.Forms.ListBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.returnTape = new System.Windows.Forms.Button();
@@ -58,6 +55,7 @@
             this.borrowedBooks = new System.Windows.Forms.Button();
             this.returnList = new System.Windows.Forms.ListBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label6 = new System.Windows.Forms.Label();
             this.reservescreenLB = new System.Windows.Forms.ListBox();
             this.reservetoggle = new System.Windows.Forms.Button();
             this.Reserve = new System.Windows.Forms.Button();
@@ -67,8 +65,6 @@
             this.ReserveCDbtn = new System.Windows.Forms.Button();
             this.ReserveBookbtn = new System.Windows.Forms.Button();
             this.ReserveTapebtn = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -88,33 +84,13 @@
             // 
             // bookBtn
             // 
-            this.bookBtn.Location = new System.Drawing.Point(23, 63);
+            this.bookBtn.Location = new System.Drawing.Point(23, 88);
             this.bookBtn.Name = "bookBtn";
             this.bookBtn.Size = new System.Drawing.Size(75, 23);
             this.bookBtn.TabIndex = 2;
-            this.bookBtn.Text = "Books";
+            this.bookBtn.Text = "Show Items";
             this.bookBtn.UseVisualStyleBackColor = true;
             this.bookBtn.Click += new System.EventHandler(this.bookBtn_Click);
-            // 
-            // videoBtn
-            // 
-            this.videoBtn.Location = new System.Drawing.Point(23, 121);
-            this.videoBtn.Name = "videoBtn";
-            this.videoBtn.Size = new System.Drawing.Size(75, 23);
-            this.videoBtn.TabIndex = 3;
-            this.videoBtn.Text = "Video Tapes";
-            this.videoBtn.UseVisualStyleBackColor = true;
-            this.videoBtn.Click += new System.EventHandler(this.videoBtn_Click);
-            // 
-            // cdBtn
-            // 
-            this.cdBtn.Location = new System.Drawing.Point(23, 92);
-            this.cdBtn.Name = "cdBtn";
-            this.cdBtn.Size = new System.Drawing.Size(75, 23);
-            this.cdBtn.TabIndex = 4;
-            this.cdBtn.Text = "CDs";
-            this.cdBtn.UseVisualStyleBackColor = true;
-            this.cdBtn.Click += new System.EventHandler(this.cdBtn_Click);
             // 
             // label1
             // 
@@ -165,6 +141,15 @@
             this.tabPage1.Size = new System.Drawing.Size(400, 258);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Admin Page";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(22, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Name:";
             // 
             // showBtn
             // 
@@ -219,16 +204,12 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.borrowTapeBtn);
-            this.tabPage2.Controls.Add(this.borrowCDBtn);
+            this.tabPage2.Controls.Add(this.borrowItemBtn);
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.cardNrBox);
-            this.tabPage2.Controls.Add(this.borrowBookBtn);
             this.tabPage2.Controls.Add(this.borrowList);
-            this.tabPage2.Controls.Add(this.cdBtn);
             this.tabPage2.Controls.Add(this.label1);
             this.tabPage2.Controls.Add(this.bookBtn);
-            this.tabPage2.Controls.Add(this.videoBtn);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -237,25 +218,15 @@
             this.tabPage2.Text = "Borrow Page";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // borrowTapeBtn
+            // borrowItemBtn
             // 
-            this.borrowTapeBtn.Location = new System.Drawing.Point(104, 205);
-            this.borrowTapeBtn.Name = "borrowTapeBtn";
-            this.borrowTapeBtn.Size = new System.Drawing.Size(142, 23);
-            this.borrowTapeBtn.TabIndex = 11;
-            this.borrowTapeBtn.Text = "Borrow";
-            this.borrowTapeBtn.UseVisualStyleBackColor = true;
-            this.borrowTapeBtn.Click += new System.EventHandler(this.borrowTapeBtn_Click_1);
-            // 
-            // borrowCDBtn
-            // 
-            this.borrowCDBtn.Location = new System.Drawing.Point(104, 205);
-            this.borrowCDBtn.Name = "borrowCDBtn";
-            this.borrowCDBtn.Size = new System.Drawing.Size(142, 23);
-            this.borrowCDBtn.TabIndex = 10;
-            this.borrowCDBtn.Text = "Borrow";
-            this.borrowCDBtn.UseVisualStyleBackColor = true;
-            this.borrowCDBtn.Click += new System.EventHandler(this.borrowCDBtn_Click_1);
+            this.borrowItemBtn.Location = new System.Drawing.Point(104, 215);
+            this.borrowItemBtn.Name = "borrowItemBtn";
+            this.borrowItemBtn.Size = new System.Drawing.Size(142, 23);
+            this.borrowItemBtn.TabIndex = 10;
+            this.borrowItemBtn.Text = "Borrow";
+            this.borrowItemBtn.UseVisualStyleBackColor = true;
+            this.borrowItemBtn.Click += new System.EventHandler(this.borrowItemBtn_Click_1);
             // 
             // label4
             // 
@@ -272,16 +243,6 @@
             this.cardNrBox.Name = "cardNrBox";
             this.cardNrBox.Size = new System.Drawing.Size(43, 20);
             this.cardNrBox.TabIndex = 8;
-            // 
-            // borrowBookBtn
-            // 
-            this.borrowBookBtn.Location = new System.Drawing.Point(104, 205);
-            this.borrowBookBtn.Name = "borrowBookBtn";
-            this.borrowBookBtn.Size = new System.Drawing.Size(142, 23);
-            this.borrowBookBtn.TabIndex = 7;
-            this.borrowBookBtn.Text = "Borrow";
-            this.borrowBookBtn.UseVisualStyleBackColor = true;
-            this.borrowBookBtn.Click += new System.EventHandler(this.borrowBookBtn_Click);
             // 
             // borrowList
             // 
@@ -396,6 +357,15 @@
             this.tabPage4.Text = "Reservation";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 3);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(81, 13);
+            this.label6.TabIndex = 24;
+            this.label6.Text = "Choose an Item";
+            // 
             // reservescreenLB
             // 
             this.reservescreenLB.FormattingEnabled = true;
@@ -479,24 +449,6 @@
             this.ReserveTapebtn.UseVisualStyleBackColor = true;
             this.ReserveTapebtn.Click += new System.EventHandler(this.ReserveTapebtn_Click);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(22, 27);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 13);
-            this.label2.TabIndex = 14;
-            this.label2.Text = "Name:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 3);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(81, 13);
-            this.label6.TabIndex = 24;
-            this.label6.Text = "Choose an Item";
-            // 
             // Library
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -521,8 +473,6 @@
         #endregion
         private System.Windows.Forms.Button deleteBtn;
         private System.Windows.Forms.Button bookBtn;
-        private System.Windows.Forms.Button videoBtn;
-        private System.Windows.Forms.Button cdBtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button reportBtn;
         private System.Windows.Forms.TabControl tabControl1;
@@ -535,7 +485,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button addBtn;
         private System.Windows.Forms.Button showBtn;
-        private System.Windows.Forms.Button borrowBookBtn;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox cardNrBox;
         private System.Windows.Forms.TabPage tabPage3;
@@ -543,8 +492,7 @@
         private System.Windows.Forms.Button borrowedTapes;
         private System.Windows.Forms.Button borrowedCD;
         private System.Windows.Forms.Button borrowedBooks;
-        private System.Windows.Forms.Button borrowTapeBtn;
-        private System.Windows.Forms.Button borrowCDBtn;
+        private System.Windows.Forms.Button borrowItemBtn;
         private System.Windows.Forms.Button returnBooks;
         private System.Windows.Forms.Button returnCD;
         private System.Windows.Forms.Button returnTape;

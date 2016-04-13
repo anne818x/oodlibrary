@@ -1,31 +1,8 @@
-<<<<<<< HEAD
-C:\Users\Annemarieke\Documents\GitHub\oodlibrary\OODLibrary\bin\Debug\OODLibrary.exe.config
-C:\Users\Annemarieke\Documents\GitHub\oodlibrary\OODLibrary\bin\Debug\OODLibrary.exe
-C:\Users\Annemarieke\Documents\GitHub\oodlibrary\OODLibrary\bin\Debug\OODLibrary.pdb
-C:\Users\Annemarieke\Documents\GitHub\oodlibrary\OODLibrary\bin\Debug\MySql.Data.dll
-C:\Users\Annemarieke\Documents\GitHub\oodlibrary\OODLibrary\obj\Debug\OODLibrary.csprojResolveAssemblyReference.cache
-C:\Users\Annemarieke\Documents\GitHub\oodlibrary\OODLibrary\obj\Debug\OODLibrary.Library.resources
-C:\Users\Annemarieke\Documents\GitHub\oodlibrary\OODLibrary\obj\Debug\OODLibrary.Properties.Resources.resources
-C:\Users\Annemarieke\Documents\GitHub\oodlibrary\OODLibrary\obj\Debug\OODLibrary.csproj.GenerateResource.Cache
-C:\Users\Annemarieke\Documents\GitHub\oodlibrary\OODLibrary\obj\Debug\OODLibrary.exe
-C:\Users\Annemarieke\Documents\GitHub\oodlibrary\OODLibrary\obj\Debug\OODLibrary.pdb
-=======
-C:\Users\emily\Documents\GitHub\oodlibrary\OODLibrary\bin\Debug\OODLibrary.exe.config
-C:\Users\emily\Documents\GitHub\oodlibrary\OODLibrary\bin\Debug\OODLibrary.exe
-C:\Users\emily\Documents\GitHub\oodlibrary\OODLibrary\bin\Debug\OODLibrary.pdb
-C:\Users\emily\Documents\GitHub\oodlibrary\OODLibrary\obj\Debug\OODLibrary.csprojResolveAssemblyReference.cache
-C:\Users\emily\Documents\GitHub\oodlibrary\OODLibrary\obj\Debug\OODLibrary.Library.resources
-C:\Users\emily\Documents\GitHub\oodlibrary\OODLibrary\obj\Debug\OODLibrary.Properties.Resources.resources
-C:\Users\emily\Documents\GitHub\oodlibrary\OODLibrary\obj\Debug\OODLibrary.csproj.GenerateResource.Cache
-C:\Users\emily\Documents\GitHub\oodlibrary\OODLibrary\obj\Debug\OODLibrary.exe
-C:\Users\emily\Documents\GitHub\oodlibrary\OODLibrary\obj\Debug\OODLibrary.pdb
->>>>>>> 7f8912b7887de7d0f0f0f2be3c0c9737604cc13d
-C:\Users\Kaloyan\Documents\oodlibrary\OODLibrary\bin\Debug\OODLibrary.exe.config
-C:\Users\Kaloyan\Documents\oodlibrary\OODLibrary\bin\Debug\OODLibrary.exe
-C:\Users\Kaloyan\Documents\oodlibrary\OODLibrary\bin\Debug\OODLibrary.pdb
-C:\Users\Kaloyan\Documents\oodlibrary\OODLibrary\obj\Debug\OODLibrary.csprojResolveAssemblyReference.cache
-C:\Users\Kaloyan\Documents\oodlibrary\OODLibrary\obj\Debug\OODLibrary.Library.resources
-C:\Users\Kaloyan\Documents\oodlibrary\OODLibrary\obj\Debug\OODLibrary.Properties.Resources.resources
-C:\Users\Kaloyan\Documents\oodlibrary\OODLibrary\obj\Debug\OODLibrary.csproj.GenerateResource.Cache
-C:\Users\Kaloyan\Documents\oodlibrary\OODLibrary\obj\Debug\OODLibrary.exe
-C:\Users\Kaloyan\Documents\oodlibrary\OODLibrary\obj\Debug\OODLibrary.pdb
+C:\Users\zulheika\Documents\School Docs\Year 2\Period 3\Object oriented design\oodlibrary\OODLibrary\bin\Debug\OODLibrary.exe.config
+C:\Users\zulheika\Documents\School Docs\Year 2\Period 3\Object oriented design\oodlibrary\OODLibrary\bin\Debug\OODLibrary.exe
+C:\Users\zulheika\Documents\School Docs\Year 2\Period 3\Object oriented design\oodlibrary\OODLibrary\bin\Debug\OODLibrary.pdb
+C:\Users\zulheika\Documents\School Docs\Year 2\Period 3\Object oriented design\oodlibrary\OODLibrary\obj\Debug\OODLibrary.Library.resources
+C:\Users\zulheika\Documents\School Docs\Year 2\Period 3\Object oriented design\oodlibrary\OODLibrary\obj\Debug\OODLibrary.Properties.Resources.resources
+C:\Users\zulheika\Documents\School Docs\Year 2\Period 3\Object oriented design\oodlibrary\OODLibrary\obj\Debug\OODLibrary.csproj.GenerateResource.Cache
+C:\Users\zulheika\Documents\School Docs\Year 2\Period 3\Object oriented design\oodlibrary\OODLibrary\obj\Debug\OODLibrary.exe
+C:\Users\zulheika\Documents\School Docs\Year 2\Period 3\Object oriented design\oodlibrary\OODLibrary\obj\Debug\OODLibrary.pdb
