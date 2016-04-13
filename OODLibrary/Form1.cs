@@ -163,119 +163,31 @@ namespace OODLibrary
                 else if (!string.IsNullOrWhiteSpace(cardNrBox.Text))
                 {
                     MessageBox.Show("You have borrowed " + selectedItem);
-                    string nullString = "NULL";
                     
-                  
-                    if (switchBorrow == 0)
-                    {
-                        
-                        Borrowed.addBorrow("'" + cardNrBox.Text + "'", "'" + borrowList.SelectedItem.ToString() + "'", nullString, nullString);
-                        Borrowed.setBookBorrowedNotAvailable(borrowList.SelectedItem.ToString());
+                    //add the borrowed item  
+                        Borrowed.addBorrow("'" + cardNrBox.Text + "'", "'" + borrowList.SelectedItem.ToString() + "'");
+                        Borrowed.setItemBorrowedNotAvailable(borrowList.SelectedItem.ToString());
                         cardNrBox.Clear();
-                    }
-
-                    else if (switchBorrow == 1)
-                    {
-
-                        Borrowed.addBorrow("'" + cardNrBox.Text + "'", nullString, "'" + borrowList.SelectedItem.ToString() + "'", nullString);
-                        Borrowed.setCDBorrowedNotAvailable(borrowList.SelectedItem.ToString());
-                        cardNrBox.Clear();
-                    }
-
-                    else if (switchBorrow == 2)
-                    {
-
-                        Borrowed.addBorrow("'" + cardNrBox.Text + "'", nullString, nullString, "'" + borrowList.SelectedItem.ToString() + "'");
-                        Borrowed.setTapeBorrowedNotAvailable(borrowList.SelectedItem.ToString());
-                        cardNrBox.Clear();
-                    }
                 }
             }
 
 
         }
 
-        //Displaying all books that can be borrowed
+        //Displaying all items that can be borrowed
         private void bookBtn_Click(object sender, EventArgs e)
         {
             borrowList.Items.Clear();
-            String booksString = Borrowed.getAllBooks();
+            String itemsString = Borrowed.getAllItems();
 
-            foreach (String book in booksString.Split('-'))
+            foreach (String item in itemsString.Split('-'))
             {
-                borrowList.Items.Add(book);
-            }
-
-            borrowBookBtn.Show();
-            borrowTapeBtn.Hide();
-            borrowCDBtn.Hide();
-
-        }
-
-        //displaying all cds that can be borrowed
-        private void cdBtn_Click(object sender, EventArgs e)
-        {
-            borrowList.Items.Clear();
-            String cdString = Borrowed.getAllCDs();
-
-            foreach (String cd in cdString.Split('-'))
-            {
-                borrowList.Items.Add(cd);
-            }
-
-            borrowBookBtn.Hide();
-            borrowTapeBtn.Hide();
-            borrowCDBtn.Show();
-
-
-        }
-
-        //Displaying all video tapes that can be borrowed
-        private void videoBtn_Click(object sender, EventArgs e)
-        {
-            borrowList.Items.Clear();
-            String tapeString = Borrowed.getAllVidTapes();
-
-            foreach (String tape in tapeString.Split('-'))
-            {
-                borrowList.Items.Add(tape);
-            }
-
-            borrowBookBtn.Hide();
-            borrowTapeBtn.Show();
-            borrowCDBtn.Hide();
-        }
-
-        //Borrow books
-        private void borrowBookBtn_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(cardNrBox.Text))
-            {
-                MessageBox.Show("Please enter a valid card number!");
-            }
-            else if (!string.IsNullOrWhiteSpace(cardNrBox.Text))
-            {
-                switchBorrow = 0;
-                selectItem();
+                borrowList.Items.Add(item);
             }
         }
 
-        //Borrow Tapes
-        private void borrowTapeBtn_Click_1(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(cardNrBox.Text))
-            {
-                MessageBox.Show("Please enter a valid card number!");
-            }
-            else if (!string.IsNullOrWhiteSpace(cardNrBox.Text))
-            {
-                switchBorrow = 2;
-                selectItem();
-            }
-        }
-
-        //CD borrow book
-        private void borrowCDBtn_Click_1(object sender, EventArgs e)
+        //Borrow item
+        private void borrowItemBtn_Click_1(object sender, EventArgs e)
         {
             
             if (string.IsNullOrWhiteSpace(cardNrBox.Text))
@@ -284,8 +196,15 @@ namespace OODLibrary
             }
             else if (!string.IsNullOrWhiteSpace(cardNrBox.Text))
             {
-                switchBorrow = 1;
                 selectItem();
+                borrowList.Items.Clear();
+                String itemsString = Borrowed.getAllItems();
+
+                foreach (String item in itemsString.Split('-'))
+                {
+                    borrowList.Items.Add(item);
+                }
+
             }
         }
 
@@ -492,6 +411,10 @@ namespace OODLibrary
                 MessageBox.Show("please fill in a an integer");
             }
         }
-        
+
+        private void cdBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
