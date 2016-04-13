@@ -36,6 +36,7 @@
             this.reportBtn = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
             this.showBtn = new System.Windows.Forms.Button();
             this.addBtn = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -58,6 +59,7 @@
             this.borrowedBooks = new System.Windows.Forms.Button();
             this.returnList = new System.Windows.Forms.ListBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label6 = new System.Windows.Forms.Label();
             this.reservescreenLB = new System.Windows.Forms.ListBox();
             this.reservetoggle = new System.Windows.Forms.Button();
             this.Reserve = new System.Windows.Forms.Button();
@@ -67,8 +69,6 @@
             this.ReserveCDbtn = new System.Windows.Forms.Button();
             this.ReserveBookbtn = new System.Windows.Forms.Button();
             this.ReserveTapebtn = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -144,7 +144,7 @@
             this.tabControl1.Location = new System.Drawing.Point(22, 14);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(408, 284);
+            this.tabControl1.Size = new System.Drawing.Size(408, 297);
             this.tabControl1.TabIndex = 7;
             // 
             // tabPage1
@@ -165,6 +165,15 @@
             this.tabPage1.Size = new System.Drawing.Size(400, 258);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Admin Page";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(22, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Name:";
             // 
             // showBtn
             // 
@@ -391,10 +400,19 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(400, 258);
+            this.tabPage4.Size = new System.Drawing.Size(400, 271);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Reservation";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 3);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(81, 13);
+            this.label6.TabIndex = 24;
+            this.label6.Text = "Choose an Item";
             // 
             // reservescreenLB
             // 
@@ -479,30 +497,14 @@
             this.ReserveTapebtn.UseVisualStyleBackColor = true;
             this.ReserveTapebtn.Click += new System.EventHandler(this.ReserveTapebtn_Click);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(22, 27);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 13);
-            this.label2.TabIndex = 14;
-            this.label2.Text = "Name:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 3);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(81, 13);
-            this.label6.TabIndex = 24;
-            this.label6.Text = "Choose an Item";
-            // 
             // Library
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(453, 310);
+            this.ClientSize = new System.Drawing.Size(454, 331);
             this.Controls.Add(this.tabControl1);
+            this.MaximumSize = new System.Drawing.Size(470, 370);
+            this.MinimumSize = new System.Drawing.Size(470, 370);
             this.Name = "Library";
             this.Text = "Library";
             this.Load += new System.EventHandler(this.Form1_Load);

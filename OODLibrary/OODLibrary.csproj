@@ -51,6 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ab_Returns.cs" />
+    <Compile Include="Books.cs" />
     <Compile Include="Borrowed.cs" />
     <Compile Include="Payfee.cs" />
     <Compile Include="Reserves.cs" />
