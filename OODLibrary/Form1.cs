@@ -191,7 +191,7 @@ namespace OODLibrary
         {
             reserveselectLB.Items.Clear();
             this.reservescreenLB.Hide();
-            String booksString = Reserves.getReservedBooks();
+            String booksString = Reserves.getReservedItems("books");
 
             foreach (String book in booksString.Split('-'))
             {
@@ -206,7 +206,7 @@ namespace OODLibrary
 
             reserveselectLB.Items.Clear();
             this.reservescreenLB.Hide();
-            String cdString = Reserves.getReservedCDs();
+            String cdString = Reserves.getReservedItems("cds");
             foreach (String cd in cdString.Split('-'))
             {
                 reserveselectLB.Items.Add(cd);
@@ -218,7 +218,7 @@ namespace OODLibrary
         {
             reserveselectLB.Items.Clear();
             this.reservescreenLB.Hide();
-            String tapeString = Reserves.getReservedVidTapes();
+            String tapeString = Reserves.getReservedItems("tapes");
 
             foreach (String tape in tapeString.Split('-'))
             {

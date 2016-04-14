@@ -42,15 +42,15 @@ namespace OODLibrary
 
             switch (input)
             {
-                case "book":
+                case "books":
                     query1 = "SELECT IDBook, BookName FROM books WHERE Availability = 'No'";
                     break;
 
-                case "tape":
+                case "tapes":
                     query1 = "SELECT IDTape, TapeName FROM videotape WHERE Availability = 'No'";
                     break;
 
-                case "cd":
+                case "cds":
                     query1 = "SELECT IDCD, CDName FROM cd WHERE Availability = 'No'";
                     break;
             }
