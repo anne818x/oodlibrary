@@ -25,13 +25,9 @@ namespace OODLibrary
         enum rstate {book,cd,video,notset};
         rstate reservestate;
 
-
-        private int switchBorrow = 0;
-        
         public Library()
         {
             InitializeComponent();
-            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -85,61 +81,6 @@ namespace OODLibrary
         private void showBtn_Click(object sender, EventArgs e)
         {
             memberShow();
-        }
-
-        //When in return to display all the books that have been borrowed and need returning
-        private void borrowedBooks_Click(object sender, EventArgs e)
-        {
-            returnList.Items.Clear();
-            String booksString = Returns.showBorrowedBooks();
-            if (String.IsNullOrEmpty(booksString))
-            {
-                MessageBox.Show("No Books Borrowed!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else
-            {
-                foreach (string book in booksString.Split('/'))
-                {
-                    returnList.Items.Add(book);
-                }
-            }
-        }
-
-        //When in return to display all the cds that have been borrowed and need returning
-        private void borrowedCD_Click(object sender, EventArgs e)
-        {
-            returnList.Items.Clear();
-            String cdsString = Returns.showBorrowedCDs();
-            cdsString = Returns.showBorrowedCDs();
-            if (String.IsNullOrEmpty(cdsString))
-            {
-                MessageBox.Show("No CDs Borrowed!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else
-            {
-                foreach (string cd in cdsString.Split('/'))
-                {
-                    returnList.Items.Add(cd);
-                }
-            }
-        }
-
-        //When in return to display all the tapes that have been borrowed and need returning
-        private void borrowedTapes_Click(object sender, EventArgs e)
-        {
-            returnList.Items.Clear();
-            String tapesString = Returns.showBorrowedTapes();
-            if (String.IsNullOrEmpty(tapesString))
-            {
-                MessageBox.Show("No Videotapes Borrowed!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            else
-            {
-                foreach (string tape in tapesString.Split('/'))
-                {
-                    returnList.Items.Add(tape);
-                } 
-            } 
         }
 
         //Display reports
@@ -206,111 +147,7 @@ namespace OODLibrary
                 }
 
             }
-        }
-
-        //return books
-        private void returnBooks_Click(object sender, EventArgs e)
-        {
-            string bookSelected = returnList.SelectedItem.ToString();
-            string[] splitstring = bookSelected.Split('-');
-            int bookId = Int32.Parse(splitstring[0]);
-            string name = splitstring[1];
-            string type = splitstring[2];
-            DateTime startDate = Convert.ToDateTime(splitstring[3]);
-            int daysPassed = Convert.ToInt32((DateTime.Now - Convert.ToDateTime(startDate)).TotalDays);
-            
-            if (type == "Novel" && daysPassed <=21)
-            {
-                MessageBox.Show("You are returning this book on time", "Details", MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-                Returns.returnBook(bookId);
-                Returns.setBookAvailable(bookId);
-            }
-            else if (type == "Study Book" && daysPassed <= 30)
-            {
-                MessageBox.Show("You are returning this book on time", "Details", MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-                Returns.returnBook(bookId);
-                Returns.setBookAvailable(bookId);
-            }
-            else
-            {
-                DialogResult result = MessageBox.Show("You have to pay € " + payfee.calculateFee(daysPassed, type, 0) + " in fees", "Pay Fee", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-                if (result == DialogResult.Yes)
-                {
-                    MessageBox.Show("You have successfully paid and returned your book!", "Details",MessageBoxButtons.OK, MessageBoxIcon.Information );
-                    Returns.returnBook(bookId);
-                    Returns.setBookAvailable(bookId);
-                }
-                else
-                {
-                    MessageBox.Show("Please pay your fees!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-                }
-            }
-        }
-        
-        //returns CD
-        private void returnCD_Click(object sender, EventArgs e)
-        {
-            string cdSelected = returnList.SelectedItem.ToString();
-            string[] splitstring = cdSelected.Split('-');
-            int cdId = Int32.Parse(splitstring[0]);
-            string name = splitstring[1];
-            string type = splitstring[2];
-            DateTime releaseDate = Convert.ToDateTime(splitstring[3]);
-            DateTime startDate = Convert.ToDateTime(splitstring[4]);
-
-            int daysPassed = Convert.ToInt32((DateTime.Now - Convert.ToDateTime(startDate)).TotalDays);
-            int age = ((DateTime.Now - releaseDate).Days);
-
-            if (age <= 365)
-            {
-                age = 0;
-            }
-            else
-            {
-                age /= 365;
-            }
-
-                DialogResult result = MessageBox.Show("You have to pay € " + payfee.calculateFee(daysPassed, type, age) + " in fees", "Pay Fee", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-                if (result == DialogResult.Yes)
-                {
-                    MessageBox.Show("You have successfully paid and returned your CD!", "Details", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Returns.returnCD(cdId);
-                    Returns.setCDAvailable(cdId);
-                }
-                else
-                {
-                    MessageBox.Show("Please pay your fees!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-                }
-        }
-
-        //returns tape
-        private void returnTape_Click(object sender, EventArgs e)
-        {
-            string tapeSelected = returnList.SelectedItem.ToString();
-            string[] splitstring = tapeSelected.Split('-');
-            int tapeId = Int32.Parse(splitstring[0]);
-            string name = splitstring[1];
-            string type = splitstring[2];
-            DateTime startDate = Convert.ToDateTime(splitstring[3]);
-            int daysPassed = Convert.ToInt32((DateTime.Now - Convert.ToDateTime(startDate)).TotalDays);
-
-            DialogResult result = MessageBox.Show("You have to pay € " + payfee.calculateFee(daysPassed, type, 0) + " in fees", "Pay Fee", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-            if (result == DialogResult.Yes)
-            {
-                MessageBox.Show("You have successfully paid and returned your videotape!", "Details", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Returns.returnTape(tapeId);
-                Returns.setTapeAvailable(tapeId);
-            }
-            else
-            {
-                MessageBox.Show("Please pay your fees!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Hand);
-            }
-        }
-
-
-
+        }     
         private void reservetoggle_Click(object sender, EventArgs e)
         {
             if (this.reservescreenLB.Visible == true)
@@ -416,5 +253,129 @@ namespace OODLibrary
         {
 
         }
-    }
-}
+
+        private void showItems_Click(object sender, EventArgs e)
+        {
+            returnList.Items.Clear();
+            String itemsString = Returns.showBorrowedItem();
+            if (String.IsNullOrEmpty(itemsString))
+            {
+                MessageBox.Show("No Items Borrowed!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                foreach (string item in itemsString.Split('/'))
+                {
+                    returnList.Items.Add(item);
+                }
+            } 
+        }
+
+        private void returnItem_Click(object sender, EventArgs e)
+        {
+            string itemSelected = returnList.SelectedItem.ToString();
+            string[] splitstring = itemSelected.Split('-');
+            int itemId = Int32.Parse(splitstring[0]);
+            string itemName = splitstring[1];
+            string itemType = splitstring[2];
+            string type = splitstring[3];
+            string isbn = splitstring[4];
+            string releaseDate = splitstring[5];
+            DateTime relDate;
+            if (releaseDate.Equals(" "))
+            {
+                relDate = Convert.ToDateTime("2015 - 12 - 16");
+            }
+            else
+            {
+                relDate = Convert.ToDateTime(releaseDate);
+            }
+            DateTime startDate = Convert.ToDateTime(splitstring[6]);
+
+            int daysPassed = Convert.ToInt32((DateTime.Now - Convert.ToDateTime(startDate)).TotalDays);
+            int age = ((DateTime.Now - relDate).Days);
+
+            if (age <= 365)
+            {
+                age = 0;
+            }
+            else
+            {
+                age /= 365;
+            }
+
+            if (itemType == "Book")
+            {
+                if (type == "Novel" && daysPassed <= 21)
+                {
+                    MessageBox.Show("You are returning this book on time", "Details", MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                    Returns.returnItem(itemId);
+                    Returns.setItemAvailable(itemId);
+                }
+                else if (type == "Study Book" && daysPassed <= 30)
+                {
+                    MessageBox.Show("You are returning this book on time", "Details", MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                    Returns.returnItem(itemId);
+                    Returns.setItemAvailable(itemId);
+                }
+                else
+                {
+                    DialogResult result =
+                        MessageBox.Show("You have to pay € " + payfee.calculateFee(daysPassed, type, 0) + " in fees",
+                            "Pay Fee", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                    if (result == DialogResult.Yes)
+                    {
+                        MessageBox.Show("You have successfully paid and returned your item!", "Details",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Returns.returnItem(itemId);
+                        Returns.setItemAvailable(itemId);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please pay your fees!", "Information", MessageBoxButtons.OK,
+                            MessageBoxIcon.Hand);
+                    }
+                }
+            }
+            else if (itemType == "CD")
+            {
+                DialogResult result =
+                    MessageBox.Show("You have to pay € " + payfee.calculateFee(daysPassed, type, age) + " in fees",
+                        "Pay Fee", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                if (result == DialogResult.Yes)
+                {
+                    MessageBox.Show("You have successfully paid and returned your CD!", "Details",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Returns.returnItem(itemId);
+                    Returns.setItemAvailable(itemId);
+                }
+                else
+                {
+                    MessageBox.Show("Please pay your fees!", "Information", MessageBoxButtons.OK,
+                        MessageBoxIcon.Hand);
+                }
+            }
+            else
+            {
+                DialogResult result =
+                    MessageBox.Show("You have to pay € " + payfee.calculateFee(daysPassed, type, 0) + " in fees",
+                        "Pay Fee", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                if (result == DialogResult.Yes)
+                {
+                    MessageBox.Show("You have successfully paid and returned your Videotape!", "Details",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Returns.returnItem(itemId);
+                    Returns.setItemAvailable(itemId);
+                }
+                else
+                {
+                    MessageBox.Show("Please pay your fees!", "Information", MessageBoxButtons.OK,
+                        MessageBoxIcon.Hand);
+                }
+            }
+        }
+
+        }
+ }
