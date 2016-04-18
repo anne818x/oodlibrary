@@ -11,10 +11,12 @@ namespace OODLibrary
         private MySqlConnection MyConn;
         private string reservations;
         private ArrayList currentlistofid;
+        private ArrayList currentlisttypes;  //associative arraylist for currentlistofid
 
         public Reserves()
         {
             currentlistofid = new ArrayList();
+            currentlisttypes = new ArrayList();
         }
 
         public void Connect()
@@ -34,6 +36,7 @@ namespace OODLibrary
         {
             //setting up initials
             currentlistofid.Clear();
+            currentlisttypes.Clear();
             string itemstring = "";
             string query1 = "";
             MySqlDataReader MyReader;
@@ -61,6 +64,7 @@ namespace OODLibrary
                         while (MyReader.Read())
                         {
                             currentlistofid.Add(MyReader["IDItem"].ToString());
+                            currentlisttypes.Add(MyReader["ItemType"].ToString());
                             itemstring += (MyReader["IDItem"].ToString() + " " + MyReader["ItemName"].ToString() + " " + MyReader["ItemType"].ToString() + "-");
                         }
                     }
@@ -82,16 +86,22 @@ namespace OODLibrary
             return this.currentlistofid;
         }
 
+        public ArrayList giveCurrentSelectiontypes()
+        {
+            return this.currentlisttypes;
+        }
+
+
         /// <summary>
         /// gets selected index and compares it to  list here to figure out specfic list to generate
         /// </summary>
         /// <param name="id"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        public string getReservations(int id, string type)
+        public string getReservations(int id)
         {
             MySqlConnection MyConn = new MySqlConnection(connection);
-            string query = "SELECT * FROM reservations WHERE item_id=" + currentlistofid[id] + " AND type = '" + type + "'";
+            string query = "SELECT * FROM reservations WHERE item_id=" + currentlistofid[id] + " AND type = '" +this.currentlisttypes[id]+"'" ;
             MySqlCommand MyCommand = new MySqlCommand(query, MyConn);
             MySqlDataReader MyReader;
             MyConn.Open();
@@ -110,10 +120,10 @@ namespace OODLibrary
         /// <param name="id"></param>
         /// <param name="c_id"></param>
         /// <param name="type"></param>
-        public void placeReservation(int id, int c_id, string type)
+        public void placeReservation(int id, int c_id)
         {
             MySqlConnection MyConn = new MySqlConnection(connection);
-            string query = "INSERT INTO reservations VALUES (null," + c_id + "," + "0.5 ," + currentlistofid[id] + "," + "'" + type + "'" + ",CURRENT_TIMESTAMP)";
+            string query = "INSERT INTO reservations VALUES (null," + c_id + "," + "0.5 ," + currentlistofid[id] + "," + "'" + currentlisttypes[id] + "'" + ",CURRENT_TIMESTAMP)";
             MySqlCommand MyCommand = new MySqlCommand(query, MyConn);
             MySqlDataReader MyReader;
             MyConn.Open();
