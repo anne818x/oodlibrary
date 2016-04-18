@@ -48,7 +48,7 @@ namespace OODLibrary
 
         }
 
-        //changing the availability of the cd tape or book to no in the book table
+        //changing the availability of the cd tape or book to no in the items table
         public void setItemBorrowedNotAvailable(String IDItem)
         {
             MyConn = new MySqlConnection(connection);
@@ -80,8 +80,8 @@ namespace OODLibrary
             }
             else
             {
-                MessageBox.Show("No books are available at the moment.  \n You can reserve.");
-                items = "No books are available.";
+                MessageBox.Show("No items are available at the moment.  \n You can reserve.");
+                items = "No items are available.";
             }
             return items;
         }
