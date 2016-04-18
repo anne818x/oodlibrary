@@ -46,7 +46,7 @@ namespace OODLibrary
             switch (input)
             {
                 case "items":
-                    query1 = "SELECT IDItem, ItemName, ItemType FROM items WHERE Availability = 'No'";
+                    query1 = "SELECT items.IDItem, items.ItemName, itemtypes.ItemType FROM items INNER JOIN itemtypes ON items.IDItemType= itemtypes.IDItemType WHERE Availability = 'No'";
                     break;
 
             }

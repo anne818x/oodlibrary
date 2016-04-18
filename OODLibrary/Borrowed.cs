@@ -63,7 +63,7 @@ namespace OODLibrary
         public String getAllItems()
         {
             MyConn = new MySqlConnection(connection);
-            string query1 = "SELECT IDItem, ItemName, ItemType FROM items WHERE Availability = 'Yes'";
+            string query1 = "SELECT items.IDItem, items.ItemName, itemtypes.ItemType FROM items, itemtypes WHERE Availability = 'Yes' AND itemtypes.IDItemType = items.IDItemType";
             MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
             MySqlDataReader MyReader;
             MyConn.Open();

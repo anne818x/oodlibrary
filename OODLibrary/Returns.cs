@@ -18,7 +18,7 @@ namespace OODLibrary
         public String showBorrowedItem()
         {
             MySqlConnection MyConn = new MySqlConnection(connection);
-            string query = "SELECT items.IDItem, items.ItemName, items.ItemType, items.Type, items.ISBN, items.ReleaseDate, borrow.BorrowID, borrow.IDItem, borrow.StartDate FROM items INNER JOIN borrow ON items.IDItem = borrow.IDItem";
+            string query = "SELECT items.IDItem, items.ItemName, itemtypes.ItemType, items.Type, items.ISBN, items.ReleaseDate, borrow.BorrowID, borrow.IDItem, borrow.StartDate FROM items INNER JOIN borrow ON items.IDItem = borrow.IDItem INNER JOIN itemtypes ON items.IDItemType= itemtypes.IDItemType";
             MySqlCommand MyCommand = new MySqlCommand(query, MyConn);
             MySqlDataReader MyReader;
             MyConn.Open();
