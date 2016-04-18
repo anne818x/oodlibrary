@@ -57,7 +57,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.reserveselectLB = new System.Windows.Forms.ListBox();
-            this.ReserveBookbtn = new System.Windows.Forms.Button();
+            this.ReserveItembtn = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -96,7 +96,7 @@
             // 
             // reportBtn
             // 
-            this.reportBtn.Location = new System.Drawing.Point(6, 229);
+            this.reportBtn.Location = new System.Drawing.Point(6, 222);
             this.reportBtn.Name = "reportBtn";
             this.reportBtn.Size = new System.Drawing.Size(181, 23);
             this.reportBtn.TabIndex = 6;
@@ -113,7 +113,7 @@
             this.tabControl1.Location = new System.Drawing.Point(22, 14);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(420, 297);
+            this.tabControl1.Size = new System.Drawing.Size(420, 277);
             this.tabControl1.TabIndex = 7;
             // 
             // tabPage1
@@ -131,7 +131,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(412, 271);
+            this.tabPage1.Size = new System.Drawing.Size(412, 251);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Admin Page";
             // 
@@ -206,7 +206,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(412, 271);
+            this.tabPage2.Size = new System.Drawing.Size(412, 251);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Borrow Page";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -253,7 +253,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(412, 271);
+            this.tabPage3.Size = new System.Drawing.Size(412, 251);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Return Page";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -294,11 +294,11 @@
             this.tabPage4.Controls.Add(this.label5);
             this.tabPage4.Controls.Add(this.textBox1);
             this.tabPage4.Controls.Add(this.reserveselectLB);
-            this.tabPage4.Controls.Add(this.ReserveBookbtn);
+            this.tabPage4.Controls.Add(this.ReserveItembtn);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(412, 271);
+            this.tabPage4.Size = new System.Drawing.Size(412, 251);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Reservation";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -324,7 +324,7 @@
             // 
             // Reserve
             // 
-            this.Reserve.Location = new System.Drawing.Point(216, 233);
+            this.Reserve.Location = new System.Drawing.Point(216, 215);
             this.Reserve.Name = "Reserve";
             this.Reserve.Size = new System.Drawing.Size(142, 23);
             this.Reserve.TabIndex = 21;
@@ -335,7 +335,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 242);
+            this.label5.Location = new System.Drawing.Point(6, 224);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(94, 13);
             this.label5.TabIndex = 19;
@@ -343,7 +343,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(103, 235);
+            this.textBox1.Location = new System.Drawing.Point(103, 217);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(43, 20);
             this.textBox1.TabIndex = 18;
@@ -356,15 +356,15 @@
             this.reserveselectLB.Size = new System.Drawing.Size(251, 95);
             this.reserveselectLB.TabIndex = 16;
             // 
-            // ReserveBookbtn
+            // ReserveItembtn
             // 
-            this.ReserveBookbtn.Location = new System.Drawing.Point(6, 47);
-            this.ReserveBookbtn.Name = "ReserveBookbtn";
-            this.ReserveBookbtn.Size = new System.Drawing.Size(75, 43);
-            this.ReserveBookbtn.TabIndex = 12;
-            this.ReserveBookbtn.Text = "Items to Reserve";
-            this.ReserveBookbtn.UseVisualStyleBackColor = true;
-            this.ReserveBookbtn.Click += new System.EventHandler(this.ReserveBookbtn_Click);
+            this.ReserveItembtn.Location = new System.Drawing.Point(6, 47);
+            this.ReserveItembtn.Name = "ReserveItembtn";
+            this.ReserveItembtn.Size = new System.Drawing.Size(75, 43);
+            this.ReserveItembtn.TabIndex = 12;
+            this.ReserveItembtn.Text = "Items to Reserve";
+            this.ReserveItembtn.UseVisualStyleBackColor = true;
+            this.ReserveItembtn.Click += new System.EventHandler(this.ReserveItembtn_Click);
             // 
             // Library
             // 
@@ -414,7 +414,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ListBox reserveselectLB;
-        private System.Windows.Forms.Button ReserveBookbtn;
+        private System.Windows.Forms.Button ReserveItembtn;
         private System.Windows.Forms.ListBox reservescreenLB;
         private System.Windows.Forms.Button reservetoggle;
         private System.Windows.Forms.Label label2;

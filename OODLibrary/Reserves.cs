@@ -32,7 +32,7 @@ namespace OODLibrary
             }
         }
 
-        public String getReservedItems(string input)//can be changed to type or something
+        public String getReservedItems(string input)
         {
             //setting up initials
             currentlistofid.Clear();
@@ -65,7 +65,7 @@ namespace OODLibrary
                         {
                             currentlistofid.Add(MyReader["IDItem"].ToString());
                             currentlisttypes.Add(MyReader["ItemType"].ToString());
-                            itemstring += (MyReader["IDItem"].ToString() + " " + MyReader["ItemName"].ToString() + " " + MyReader["ItemType"].ToString() + "-");
+                            itemstring += (MyReader["IDItem"].ToString() + " " + MyReader["ItemName"].ToString() + " (" + MyReader["ItemType"].ToString() + ")" + "-");
                         }
                     }
                     else

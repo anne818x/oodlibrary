@@ -14,6 +14,7 @@ namespace OODLibrary
         MySqlConnection MyConn;
         private string borrowedItems;
 
+        //Displaying all items from the borrowed table in the DB
         public String showBorrowedItem()
         {
             MySqlConnection MyConn = new MySqlConnection(connection);
@@ -40,6 +41,7 @@ namespace OODLibrary
             return borrowedItems;
         }
 
+        //Returning the selected item and deleting it off the borrow table
         public void returnItem(int itemId)
         {
             MyConn = new MySqlConnection(connection);
@@ -50,6 +52,7 @@ namespace OODLibrary
             MyReader = MyCommand.ExecuteReader();
         }
 
+        //once returned it changes the availability back to yes
         public void setItemAvailable(int itemId)
         {
             MyConn = new MySqlConnection(connection);

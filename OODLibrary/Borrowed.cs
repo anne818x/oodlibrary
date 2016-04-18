@@ -59,6 +59,7 @@ namespace OODLibrary
             MyReader = MyCommand.ExecuteReader();
         }
        
+        //To get all the items that have the availability of yes, to display the items that can be borrowed
         public String getAllItems()
         {
             MyConn = new MySqlConnection(connection);

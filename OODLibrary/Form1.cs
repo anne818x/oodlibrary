@@ -23,7 +23,6 @@ namespace OODLibrary
 
 
         enum rstate {book,cd,video,notset};
-        rstate reservestate;
 
         public Library()
         {
@@ -127,7 +126,7 @@ namespace OODLibrary
             }
         }
 
-        //Borrow item
+        //user selected item they want to borrow then it does a check before being able to borrow
         private void borrowItemBtn_Click_1(object sender, EventArgs e)
         {
             
@@ -187,7 +186,8 @@ namespace OODLibrary
             }
         }
 
-        private void ReserveBookbtn_Click(object sender, EventArgs e)
+        //Displaying the items that can be reserved
+        private void ReserveItembtn_Click(object sender, EventArgs e)
         {
             reserveselectLB.Items.Clear();
             this.reservescreenLB.Hide();
@@ -197,26 +197,10 @@ namespace OODLibrary
             {
                 reserveselectLB.Items.Add(item);
             }
-            if (itemString == "book")
-            {
 
-                reservestate = rstate.book;
-            }
-            else if (itemString == "cd")
-            {
-
-                reservestate = rstate.cd;
-            }
-            else if (itemString == "video")
-            {
-
-                reservestate = rstate.video;
-            }
         }
 
- 
-
-
+        //reserving the item that is selected
         private void Reserve_Click_1(object sender, EventArgs e)
         {
             int x;
@@ -239,7 +223,7 @@ namespace OODLibrary
             }
         }
 
-
+        //showing all the items that need to be returned
         private void showItems_Click(object sender, EventArgs e)
         {
             returnList.Items.Clear();
@@ -257,6 +241,7 @@ namespace OODLibrary
             } 
         }
 
+        //when selected the item to return this will do the calculation to pay a fee or not and return the item at the same time if it is payed. 
         private void returnItem_Click(object sender, EventArgs e)
         {
             string itemSelected = returnList.SelectedItem.ToString();
