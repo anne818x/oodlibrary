@@ -53,7 +53,7 @@ namespace OODLibrary
             MyConn.Open();
            
 
-            //check if the member has already borrowed books
+            //check if the member has already borrowed items
             string query2 = "SELECT userdata.IDMember FROM userdata, borrow WHERE userdata.IDMember = borrow.IDMember AND userdata.IDMember = '" + IDMember + "'";
             MySqlCommand MyCommand2 = new MySqlCommand(query2, MyConn);
             MySqlDataReader MyReader2;
@@ -61,7 +61,7 @@ namespace OODLibrary
 
             if (MyReader2.HasRows)
             {
-                MessageBox.Show("This member has items in their possession that still need to be returned. \n You cannot delete this member.");
+                MessageBox.Show("This member has items in their possession that still need to be returned. \n You cannot delete this member.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {

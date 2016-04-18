@@ -70,8 +70,8 @@ namespace OODLibrary
                     }
                     else
                     {
-                        MessageBox.Show("No books are borrowed at the moment.");
-                        itemstring = "No books are borrowed at the moment.";
+                        MessageBox.Show("No items are borrowed at the moment.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        itemstring = "No items are borrowed at the moment.";
                     }
                     break;
 
