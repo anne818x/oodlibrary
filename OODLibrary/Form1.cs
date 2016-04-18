@@ -116,7 +116,7 @@ namespace OODLibrary
         }
 
         //Displaying all items that can be borrowed
-        private void bookBtn_Click(object sender, EventArgs e)
+        private void ShowItemsBtn_Click(object sender, EventArgs e)
         {
             borrowList.Items.Clear();
             String itemsString = Borrowed.getAllItems();
@@ -239,10 +239,6 @@ namespace OODLibrary
             }
         }
 
-        private void cdBtn_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void showItems_Click(object sender, EventArgs e)
         {

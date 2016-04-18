@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.deleteBtn = new System.Windows.Forms.Button();
-            this.bookBtn = new System.Windows.Forms.Button();
+            this.ShowItemsBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.reportBtn = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -75,20 +75,20 @@
             this.deleteBtn.UseVisualStyleBackColor = true;
             this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
-            // bookBtn
+            // ShowItemsBtn
             // 
-            this.bookBtn.Location = new System.Drawing.Point(23, 88);
-            this.bookBtn.Name = "bookBtn";
-            this.bookBtn.Size = new System.Drawing.Size(75, 23);
-            this.bookBtn.TabIndex = 2;
-            this.bookBtn.Text = "Show Items";
-            this.bookBtn.UseVisualStyleBackColor = true;
-            this.bookBtn.Click += new System.EventHandler(this.bookBtn_Click);
+            this.ShowItemsBtn.Location = new System.Drawing.Point(77, 92);
+            this.ShowItemsBtn.Name = "ShowItemsBtn";
+            this.ShowItemsBtn.Size = new System.Drawing.Size(75, 23);
+            this.ShowItemsBtn.TabIndex = 2;
+            this.ShowItemsBtn.Text = "Show Items";
+            this.ShowItemsBtn.UseVisualStyleBackColor = true;
+            this.ShowItemsBtn.Click += new System.EventHandler(this.ShowItemsBtn_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 28);
+            this.label1.Location = new System.Drawing.Point(74, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 13);
             this.label1.TabIndex = 5;
@@ -202,7 +202,7 @@
             this.tabPage2.Controls.Add(this.cardNrBox);
             this.tabPage2.Controls.Add(this.borrowList);
             this.tabPage2.Controls.Add(this.label1);
-            this.tabPage2.Controls.Add(this.bookBtn);
+            this.tabPage2.Controls.Add(this.ShowItemsBtn);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -213,7 +213,7 @@
             // 
             // borrowItemBtn
             // 
-            this.borrowItemBtn.Location = new System.Drawing.Point(104, 215);
+            this.borrowItemBtn.Location = new System.Drawing.Point(158, 219);
             this.borrowItemBtn.Name = "borrowItemBtn";
             this.borrowItemBtn.Size = new System.Drawing.Size(142, 23);
             this.borrowItemBtn.TabIndex = 10;
@@ -224,7 +224,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(106, 177);
+            this.label4.Location = new System.Drawing.Point(160, 181);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(94, 13);
             this.label4.TabIndex = 9;
@@ -232,7 +232,7 @@
             // 
             // cardNrBox
             // 
-            this.cardNrBox.Location = new System.Drawing.Point(203, 174);
+            this.cardNrBox.Location = new System.Drawing.Point(257, 178);
             this.cardNrBox.Name = "cardNrBox";
             this.cardNrBox.Size = new System.Drawing.Size(43, 20);
             this.cardNrBox.TabIndex = 8;
@@ -240,7 +240,7 @@
             // borrowList
             // 
             this.borrowList.FormattingEnabled = true;
-            this.borrowList.Location = new System.Drawing.Point(104, 24);
+            this.borrowList.Location = new System.Drawing.Point(158, 28);
             this.borrowList.Name = "borrowList";
             this.borrowList.Size = new System.Drawing.Size(142, 134);
             this.borrowList.TabIndex = 6;
@@ -391,7 +391,7 @@
 
         #endregion
         private System.Windows.Forms.Button deleteBtn;
-        private System.Windows.Forms.Button bookBtn;
+        private System.Windows.Forms.Button ShowItemsBtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button reportBtn;
         private System.Windows.Forms.TabControl tabControl1;

@@ -62,7 +62,7 @@ namespace OODLibrary
         public String getAllItems()
         {
             MyConn = new MySqlConnection(connection);
-            string query1 = "SELECT IDItem, ItemName FROM items WHERE Availability = 'Yes'";
+            string query1 = "SELECT IDItem, ItemName, ItemType FROM items WHERE Availability = 'Yes'";
             MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
             MySqlDataReader MyReader;
             MyConn.Open();
@@ -73,7 +73,7 @@ namespace OODLibrary
             {
                 while (MyReader.Read())
                 {
-                    items += (MyReader["IDItem"].ToString() + " " + MyReader["ItemName"].ToString() + "-");
+                    items += (MyReader["IDItem"].ToString() + " " + MyReader["ItemName"].ToString() + " (" + MyReader["ItemType"].ToString()+")" + "-");
                 }
                 
             }
