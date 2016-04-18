@@ -191,41 +191,31 @@ namespace OODLibrary
         {
             reserveselectLB.Items.Clear();
             this.reservescreenLB.Hide();
-            String booksString = Reserves.getReservedItems("books");
+            String itemString = Reserves.getReservedItems("items");
 
-            foreach (String book in booksString.Split('-'))
+            foreach (String item in itemString.Split('-'))
             {
-                reserveselectLB.Items.Add(book);
+                reserveselectLB.Items.Add(item);
             }
-            reservestate = rstate.book;
+            if (itemString == "book")
+            {
 
+                reservestate = rstate.book;
+            }
+            else if (itemString == "cd")
+            {
+
+                reservestate = rstate.cd;
+            }
+            else if (itemString == "video")
+            {
+
+                reservestate = rstate.video;
+            }
         }
 
-        private void ReserveCDbtn_Click(object sender, EventArgs e)
-        {
+ 
 
-            reserveselectLB.Items.Clear();
-            this.reservescreenLB.Hide();
-            String cdString = Reserves.getReservedItems("cds");
-            foreach (String cd in cdString.Split('-'))
-            {
-                reserveselectLB.Items.Add(cd);
-            }
-            reservestate = rstate.cd;
-        }
-
-        private void ReserveTapebtn_Click(object sender, EventArgs e)
-        {
-            reserveselectLB.Items.Clear();
-            this.reservescreenLB.Hide();
-            String tapeString = Reserves.getReservedItems("tapes");
-
-            foreach (String tape in tapeString.Split('-'))
-            {
-                reserveselectLB.Items.Add(tape);
-            }
-            reservestate = rstate.video;
-        }
 
         private void Reserve_Click_1(object sender, EventArgs e)
         {

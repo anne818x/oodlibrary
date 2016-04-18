@@ -51,16 +51,13 @@
             this.showItems = new System.Windows.Forms.Button();
             this.returnList = new System.Windows.Forms.ListBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.label6 = new System.Windows.Forms.Label();
             this.reservescreenLB = new System.Windows.Forms.ListBox();
             this.reservetoggle = new System.Windows.Forms.Button();
             this.Reserve = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.reserveselectLB = new System.Windows.Forms.ListBox();
-            this.ReserveCDbtn = new System.Windows.Forms.Button();
             this.ReserveBookbtn = new System.Windows.Forms.Button();
-            this.ReserveTapebtn = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -291,16 +288,13 @@
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.label6);
             this.tabPage4.Controls.Add(this.reservescreenLB);
             this.tabPage4.Controls.Add(this.reservetoggle);
             this.tabPage4.Controls.Add(this.Reserve);
             this.tabPage4.Controls.Add(this.label5);
             this.tabPage4.Controls.Add(this.textBox1);
             this.tabPage4.Controls.Add(this.reserveselectLB);
-            this.tabPage4.Controls.Add(this.ReserveCDbtn);
             this.tabPage4.Controls.Add(this.ReserveBookbtn);
-            this.tabPage4.Controls.Add(this.ReserveTapebtn);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
@@ -308,15 +302,6 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Reservation";
             this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 3);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(81, 13);
-            this.label6.TabIndex = 24;
-            this.label6.Text = "Choose an Item";
             // 
             // reservescreenLB
             // 
@@ -371,35 +356,15 @@
             this.reserveselectLB.Size = new System.Drawing.Size(251, 95);
             this.reserveselectLB.TabIndex = 16;
             // 
-            // ReserveCDbtn
-            // 
-            this.ReserveCDbtn.Location = new System.Drawing.Point(3, 60);
-            this.ReserveCDbtn.Name = "ReserveCDbtn";
-            this.ReserveCDbtn.Size = new System.Drawing.Size(75, 23);
-            this.ReserveCDbtn.TabIndex = 14;
-            this.ReserveCDbtn.Text = "CDs";
-            this.ReserveCDbtn.UseVisualStyleBackColor = true;
-            this.ReserveCDbtn.Click += new System.EventHandler(this.ReserveCDbtn_Click);
-            // 
             // ReserveBookbtn
             // 
-            this.ReserveBookbtn.Location = new System.Drawing.Point(3, 31);
+            this.ReserveBookbtn.Location = new System.Drawing.Point(6, 47);
             this.ReserveBookbtn.Name = "ReserveBookbtn";
-            this.ReserveBookbtn.Size = new System.Drawing.Size(75, 23);
+            this.ReserveBookbtn.Size = new System.Drawing.Size(75, 43);
             this.ReserveBookbtn.TabIndex = 12;
-            this.ReserveBookbtn.Text = "Books";
+            this.ReserveBookbtn.Text = "Items to Reserve";
             this.ReserveBookbtn.UseVisualStyleBackColor = true;
             this.ReserveBookbtn.Click += new System.EventHandler(this.ReserveBookbtn_Click);
-            // 
-            // ReserveTapebtn
-            // 
-            this.ReserveTapebtn.Location = new System.Drawing.Point(3, 89);
-            this.ReserveTapebtn.Name = "ReserveTapebtn";
-            this.ReserveTapebtn.Size = new System.Drawing.Size(75, 23);
-            this.ReserveTapebtn.TabIndex = 13;
-            this.ReserveTapebtn.Text = "Video Tapes";
-            this.ReserveTapebtn.UseVisualStyleBackColor = true;
-            this.ReserveTapebtn.Click += new System.EventHandler(this.ReserveTapebtn_Click);
             // 
             // Library
             // 
@@ -449,13 +414,10 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ListBox reserveselectLB;
-        private System.Windows.Forms.Button ReserveCDbtn;
         private System.Windows.Forms.Button ReserveBookbtn;
-        private System.Windows.Forms.Button ReserveTapebtn;
         private System.Windows.Forms.ListBox reservescreenLB;
         private System.Windows.Forms.Button reservetoggle;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button showItems;
         private System.Windows.Forms.Button returnItem;
     }

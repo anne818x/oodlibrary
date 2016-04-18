@@ -42,17 +42,10 @@ namespace OODLibrary
 
             switch (input)
             {
-                case "books":
-                    query1 = "SELECT IDBook, BookName FROM books WHERE Availability = 'No'";
+                case "items":
+                    query1 = "SELECT IDItem, ItemName, ItemType FROM items WHERE Availability = 'No'";
                     break;
 
-                case "tapes":
-                    query1 = "SELECT IDTape, TapeName FROM videotape WHERE Availability = 'No'";
-                    break;
-
-                case "cds":
-                    query1 = "SELECT IDCD, CDName FROM cd WHERE Availability = 'No'";
-                    break;
             }
 
             MySqlCommand MyCommand = new MySqlCommand(query1, MyConn);
@@ -62,13 +55,13 @@ namespace OODLibrary
             //  books = null;
             switch (input)
             {
-                case "books":
+                case "items":
                     if (MyReader.HasRows)
                     {
                         while (MyReader.Read())
                         {
-                            currentlistofid.Add(MyReader["IDBook"].ToString());
-                            itemstring += (MyReader["IDBook"].ToString() + " " + MyReader["BookName"].ToString() + "-");
+                            currentlistofid.Add(MyReader["IDItem"].ToString());
+                            itemstring += (MyReader["IDItem"].ToString() + " " + MyReader["ItemName"].ToString() + " " + MyReader["ItemType"].ToString() + "-");
                         }
                     }
                     else
@@ -78,37 +71,7 @@ namespace OODLibrary
                     }
                     break;
 
-                case "tapes":
-                    if (MyReader.HasRows)
-                    {
-                        while (MyReader.Read())
-                        {
-                            currentlistofid.Add(MyReader["IDTape"].ToString());
-                            itemstring += (MyReader["IDTape"].ToString() + " " + MyReader["TapeName"].ToString() + "-");
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("No video tapes are borrowed at the moment..");
-                        itemstring = "No video tapes are borrowed at the moment.";
-                    }
-                    break;
-
-                case "cds":
-                    if (MyReader.HasRows)
-                    {
-                        while (MyReader.Read())
-                        {
-                            currentlistofid.Add(MyReader["IDCD"].ToString());
-                            itemstring += (MyReader["IDCD"].ToString() + " " + MyReader["CDName"].ToString() + "-");
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("No cds are borrowed at the moment.");
-                        itemstring = "No cds are borrowed at the moment.";
-                    }
-                    break;
+           
             }
 
             return itemstring;
