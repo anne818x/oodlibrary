@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Collections;
+using System.Threading;
+using System.Globalization;
 
 namespace OODLibrary
 {
@@ -32,6 +34,7 @@ namespace OODLibrary
         private void Form1_Load(object sender, EventArgs e)
         {
             Reserves.Connect();
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("de-DE");
         }
 
         //Displaying all the members in list box
