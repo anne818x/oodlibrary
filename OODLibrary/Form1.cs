@@ -160,7 +160,7 @@ namespace OODLibrary
                 {
 
                     reservescreenLB.Items.Clear();
-                    foreach (String item in Reserves.getReservations(reserveselectLB.SelectedIndex,reservestate.ToString()).Split('?'))
+                    foreach (String item in Reserves.getReservations(reserveselectLB.SelectedIndex).Split('?'))
                     {
                         reservescreenLB.Items.Add(item);
                     }
@@ -224,7 +224,7 @@ namespace OODLibrary
             {
                 if (this.reserveselectLB.SelectedItem != null)
                 {
-                    this.Reserves.placeReservation(this.reserveselectLB.SelectedIndex, x, this.reservestate.ToString());
+                    this.Reserves.placeReservation(this.reserveselectLB.SelectedIndex, x);
                     MessageBox.Show("Reservation ADDED");
                 }
                 else
