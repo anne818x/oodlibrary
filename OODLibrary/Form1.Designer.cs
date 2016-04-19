@@ -110,10 +110,10 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Location = new System.Drawing.Point(22, 14);
+            this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(557, 277);
+            this.tabControl1.Size = new System.Drawing.Size(457, 277);
             this.tabControl1.TabIndex = 7;
             // 
             // tabPage1
@@ -131,7 +131,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(412, 251);
+            this.tabPage1.Size = new System.Drawing.Size(449, 251);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Admin Page";
             // 
@@ -206,7 +206,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(412, 251);
+            this.tabPage2.Size = new System.Drawing.Size(449, 251);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Borrow Page";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -253,7 +253,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(549, 251);
+            this.tabPage3.Size = new System.Drawing.Size(449, 251);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Return Page";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -283,7 +283,7 @@
             this.returnList.FormattingEnabled = true;
             this.returnList.Location = new System.Drawing.Point(6, 6);
             this.returnList.Name = "returnList";
-            this.returnList.Size = new System.Drawing.Size(537, 147);
+            this.returnList.Size = new System.Drawing.Size(437, 147);
             this.returnList.TabIndex = 0;
             // 
             // tabPage4
@@ -298,7 +298,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(412, 251);
+            this.tabPage4.Size = new System.Drawing.Size(449, 251);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Reservation";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -370,10 +370,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 331);
+            this.ClientSize = new System.Drawing.Size(484, 301);
             this.Controls.Add(this.tabControl1);
-            this.MaximumSize = new System.Drawing.Size(600, 370);
-            this.MinimumSize = new System.Drawing.Size(470, 370);
+            this.MaximumSize = new System.Drawing.Size(600, 600);
+            this.MinimumSize = new System.Drawing.Size(470, 340);
             this.Name = "Library";
             this.Text = "Library";
             this.Load += new System.EventHandler(this.Form1_Load);
